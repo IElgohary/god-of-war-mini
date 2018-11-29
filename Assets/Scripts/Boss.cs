@@ -5,13 +5,14 @@ using UnityEngine;
 public class Boss : MonoBehaviour {
 
     public float range = 5.2f;
-    public float timeBetweenAttacks = 1f;
-
+    public float timeBetweenAttacks = 2f;
+    public int currentHealth = 200;
+    
     private Animator anim;
     private GameObject player;
     private bool playerInRange;
     private BoxCollider[] weaponColliders;
-
+    private string[] attacks = { "Basic Attack", "Claw Attack", "Flame Attack"}; 
 
 
 	// Use this for initialization
@@ -30,12 +31,12 @@ public class Boss : MonoBehaviour {
         } else {
             playerInRange = false;
         }
-
 	}
 
     IEnumerator attack(){
         if(playerInRange && !GameManager.instance.gameOver){
-            anim.Play("Basic Attack");
+            int attackIndex = Random.Range(0, 3);
+            anim.Play(attacks[attackIndex]);
             yield return new WaitForSeconds(timeBetweenAttacks);
         }
         yield return null;

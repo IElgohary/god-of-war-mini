@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 212062924}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -192,11 +192,11 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 212062923}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 2.2449884
+  m_Center: {x: 0, y: -0.7150116, z: -1.0299768}
 --- !u!23 &212062926
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -450,8 +450,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ccdf695650214550aec6099eec20898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 20
+  range: 5.2
   timeBetweenAttacks: 1
+  currentHealth: 200
 --- !u!54 &518218221
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -491,7 +492,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1164006587}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 129.56158, y: 58.60582, z: 112.89129}
@@ -538,6 +539,22 @@ Prefab:
     - target: {fileID: 480112, guid: 8e302007cba46d94b970c6a0955b9628, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 9584802, guid: 8e302007cba46d94b970c6a0955b9628, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100606, guid: 8e302007cba46d94b970c6a0955b9628, type: 2}
+      propertyPath: m_TagString
+      value: DamageDoer
+      objectReference: {fileID: 0}
+    - target: {fileID: 129700, guid: 8e302007cba46d94b970c6a0955b9628, type: 2}
+      propertyPath: m_TagString
+      value: DamageDoer
+      objectReference: {fileID: 0}
+    - target: {fileID: 129778, guid: 8e302007cba46d94b970c6a0955b9628, type: 2}
+      propertyPath: m_TagString
+      value: DamageDoer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e302007cba46d94b970c6a0955b9628, type: 2}
@@ -620,7 +637,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1711475612}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 129.56158, y: 58.60582, z: 112.89129}
