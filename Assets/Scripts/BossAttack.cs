@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss : MonoBehaviour {
+public class BossAttack : MonoBehaviour {
 
     public float range = 5.2f;
     public float timeBetweenAttacks = 2f;
@@ -31,6 +31,7 @@ public class Boss : MonoBehaviour {
         } else {
             playerInRange = false;
         }
+        
 	}
 
     IEnumerator attack(){
