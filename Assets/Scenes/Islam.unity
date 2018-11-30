@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 212062924}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Player
+  m_TagString: PlayerWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -448,7 +448,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 518218218}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9d40bb26e0b849b18e958829fd2ba8d, type: 3}
+  m_Script: {fileID: 11500000, guid: 80869dae4a95441fe82017cd6ed80873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 212062928}
@@ -514,7 +514,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 5.2
   timeBetweenAttacks: 2
-  currentHealth: 200
+--- !u!114 &518218226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 518218218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d11d987466749eb995252e78a1c4cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageTaker: []
+  isAlive: 0
+  currentHealth: 20
 --- !u!1 &1164006587 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 129700, guid: 8e302007cba46d94b970c6a0955b9628,
