@@ -6,23 +6,21 @@ public class BossAttack : MonoBehaviour {
 
     public float range = 5.2f;
     public float timeBetweenAttacks = 2f;
-    public int currentHealth = 200;
     
     private Animator anim;
     private GameObject player;
     private bool playerInRange;
-    private BoxCollider[] weaponColliders;
-    private string[] attacks = { "Basic Attack", "Claw Attack", "Flame Attack"}; 
+    private string[] attacks = { "Basic Attack", "Claw Attack", "Flame Attack"};
+    private BossHealth bossHealth;
 
 
-	// Use this for initialization
-	void Start () {
-
-        weaponColliders = GetComponentsInChildren<BoxCollider>();
+    // Use this for initialization
+    void Start () {
         player = GameManager.instance.player;
         anim = GetComponent<Animator>();
         StartCoroutine(attack());
-	}
+        bossHealth = GetComponent<BossHealth>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -35,7 +33,7 @@ public class BossAttack : MonoBehaviour {
 	}
 
     IEnumerator attack(){
-        if(playerInRange && !GameManager.instance.gameOver){
+        if(playerInRange && !GameManager.instance.gameOver && bossHealth.isAlive){
             int attackIndex = Random.Range(0, 3);
             anim.Play(attacks[attackIndex]);
             yield return new WaitForSeconds(timeBetweenAttacks);
