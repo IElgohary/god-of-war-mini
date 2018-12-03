@@ -25,7 +25,6 @@ public class BossAttack : MonoBehaviour {
         anim = GetComponent<Animator>();
         StartCoroutine(attack());
         bossHealth = GetComponent<BossHealth>();
-        flames.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -41,7 +40,7 @@ public class BossAttack : MonoBehaviour {
 
     IEnumerator attack(){
         if(playerInRange && !GameManager.instance.gameOver && bossHealth.isAlive){
-            int attackIndex = Random.Range(0, 3);
+            int attackIndex = 0;//Random.Range(0, 3);
             anim.Play(attacks[attackIndex]);
             yield return new WaitForSeconds(timeBetweenAttacks);
         }
@@ -59,9 +58,30 @@ public class BossAttack : MonoBehaviour {
         flames.SetActive(false);
     }
 
+    public void StartClaws() {
+        weaponColliders[1].enabled = true;
+        weaponColliders[2].enabled = true;
+    }
+
+    public void StopClaws()
+    {
+        weaponColliders[1].enabled = false;
+        weaponColliders[2].enabled = false;
+    }
+
+    public void StartBite() {
+        weaponColliders[0].enabled = true;
+    }
+
+    public void EndBite()
+    {
+        weaponColliders[0].enabled = false;
+    }
+
     private void rotateTowards(Transform player) {
         Vector3 direction = (player.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 1f);
     }
+
 }

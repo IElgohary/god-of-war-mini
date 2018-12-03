@@ -8,6 +8,7 @@ public class BossMove : MonoBehaviour {
     public Transform player;
     [Tooltip("Distance between enemy and player.")]
     public float offset;
+
     private NavMeshAgent nav;
     private Animator anim;
     private BossHealth bossHealth;
