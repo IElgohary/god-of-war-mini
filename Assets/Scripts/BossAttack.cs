@@ -43,7 +43,13 @@ public class BossAttack : MonoBehaviour {
         if(playerInRange && attacks.Length > 0 && !GameManager.instance.gameOver && bossHealth.isAlive){
             int attackIndex = Random.Range(0, attacks.Length);
             anim.Play(attacks[attackIndex]);
+            if (!attacks[attackIndex].Equals("Flame Attack")){
+                flames.SetActive(false);
+            }
             yield return new WaitForSeconds(timeBetweenAttacks);
+        }
+        if(attacks.Length == 0 || !playerInRange){
+           flames.SetActive(false);
         }
         yield return null;
         StartCoroutine(attack());

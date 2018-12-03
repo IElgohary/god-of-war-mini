@@ -75,6 +75,7 @@ public class BossHealth : MonoBehaviour
             isAlive = false;
             KillBoss();
         }
+        stunt();
     }
 
     void KillBoss() {
@@ -89,6 +90,12 @@ public class BossHealth : MonoBehaviour
         dissapearEnemy = true;
         yield return new WaitForSeconds(2);
         Destroy(gameObject);
+    }
+
+    IEnumerable stunt(){
+        anim.SetTrigger("isStunned");
+        yield return new WaitForSeconds(5);
+        //anim.ResetTrigger("isStunned");
     }
 
 }
