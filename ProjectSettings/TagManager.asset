@@ -9,6 +9,7 @@ TagManager:
   - Weapon
   - Flames
   - BossWeakPt
+  - Boss
   layers:
   - Default
   - TransparentFX

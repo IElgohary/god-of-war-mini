@@ -229,7 +229,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.28788713
+      - time: 0.23407547
         functionName: StartFlames
         data: 
         objectReferenceParameter: {instanceID: 0}

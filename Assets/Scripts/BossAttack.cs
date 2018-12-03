@@ -21,6 +21,7 @@ public class BossAttack : MonoBehaviour {
     // Use this for initialization
     void Start () {
         flames = GameObject.FindGameObjectWithTag("Flames");
+        flames.SetActive(false);
         player = GameManager.instance.player;
         anim = GetComponent<Animator>();
         StartCoroutine(attack());
@@ -39,8 +40,8 @@ public class BossAttack : MonoBehaviour {
 	}
 
     IEnumerator attack(){
-        if(playerInRange && !GameManager.instance.gameOver && bossHealth.isAlive){
-            int attackIndex = 0;//Random.Range(0, 3);
+        if(playerInRange && attacks.Length > 0 && !GameManager.instance.gameOver && bossHealth.isAlive){
+            int attackIndex = Random.Range(0, attacks.Length);
             anim.Play(attacks[attackIndex]);
             yield return new WaitForSeconds(timeBetweenAttacks);
         }
@@ -76,6 +77,22 @@ public class BossAttack : MonoBehaviour {
     public void EndBite()
     {
         weaponColliders[0].enabled = false;
+    }
+
+    public void disableAttack(string name){
+        string[] tmp = new string[attacks.Length-1];
+        int idx = 0;
+        foreach (string attackName in attacks)
+        {
+            if(!attackName.Equals(name)){
+                if(idx >= tmp.Length){
+                    break;
+                }
+                tmp[idx] = attackName;
+                idx++;
+            }
+        }
+        attacks = tmp;
     }
 
     private void rotateTowards(Transform player) {

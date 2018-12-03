@@ -54,11 +54,24 @@ public class BossHealth : MonoBehaviour
 
     void takeHit() {
         if(currentHealth > 0) {
-            anim.Play("Get Hit");
             currentHealth -= 10;
         }
 
         if(currentHealth <= 0){
+            isAlive = false;
+            KillBoss();
+        }
+    }
+
+    public void weakPoint() {
+        if (currentHealth > 0)
+        {
+            anim.Play("Get Hit");
+            currentHealth -= 10;
+        }
+
+        if (currentHealth <= 0)
+        {
             isAlive = false;
             KillBoss();
         }
