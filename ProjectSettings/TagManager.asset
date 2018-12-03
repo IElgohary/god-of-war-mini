@@ -7,6 +7,8 @@ TagManager:
   - DamageDoer
   - PlayerWeapon
   - Weapon
+  - Flames
+  - BossWeakPt
   layers:
   - Default
   - TransparentFX

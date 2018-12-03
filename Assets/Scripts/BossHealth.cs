@@ -13,7 +13,7 @@ public class BossHealth : MonoBehaviour
     public int currentHealth;
 
     private int startingHealth = 200;
-    private float timeSinceLastHit = 0.5f;
+    private float timeSinceLastHit = 1f;
     private float dissapearSpeed = 2f;
     private float timer = 0f;
     private Animator anim;
@@ -44,7 +44,7 @@ public class BossHealth : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other) {
-        if(timer >= timeSinceLastHit &&!GameManager.instance.gameOver) {
+        if(timer >= timeSinceLastHit && !GameManager.instance.gameOver) {
             if(other.tag == "PlayerWeapon") {
                 takeHit();
                 timer = 0f;
@@ -77,4 +77,5 @@ public class BossHealth : MonoBehaviour
         yield return new WaitForSeconds(2);
         Destroy(gameObject);
     }
+
 }
