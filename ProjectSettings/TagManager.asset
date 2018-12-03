@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DamageDoer
   - PlayerWeapon
+  - Weapon
   layers:
   - Default
   - TransparentFX
