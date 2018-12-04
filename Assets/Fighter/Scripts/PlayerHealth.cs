@@ -56,6 +56,6 @@ public class PlayerHealth : MonoBehaviour
     {
         //GameManager.instance.PlayerHit(currentHealth);
         anim.SetTrigger("herodie");
-        characterController.enabled = false;
+        //characterController.enabled = false;
     }
 }
