@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
+
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
@@ -41,7 +41,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         {
             if (!m_Jump)
             {
-                m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+                m_Jump = Input.GetButtonDown("Jump");
             }
             if(Input.GetMouseButtonDown(0)){
                  anim.Play("double_chop");
@@ -78,8 +78,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		}
 
             // read inputs
-            float h = CrossPlatformInputManager.GetAxis("Horizontal");
-            float v = CrossPlatformInputManager.GetAxis("Vertical");
+            float h = Input.GetAxis("Horizontal");
+            float v = Input.GetAxis("Vertical");
             bool crouch = Input.GetKey(KeyCode.C);
 
             // calculate move direction to pass to character
