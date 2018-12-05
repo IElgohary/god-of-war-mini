@@ -11,6 +11,7 @@ TagManager:
   - BossWeakPt
   - Boss
   - Kratos Blade
+  - Chest
   layers:
   - Default
   - TransparentFX

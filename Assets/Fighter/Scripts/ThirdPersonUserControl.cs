@@ -27,7 +27,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public int skillPoints = 0;
         private bool rageBool = false;
         private bool Shield = false;
-
+        public int jumpState;
 
 
         private void Start()
@@ -86,7 +86,21 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             if (!m_Jump)
             {
                 m_Jump = Input.GetButtonDown("Jump");
+
             }
+            if (m_Jump)
+                jumpState++;
+
+            if (m_Character.m_IsGrounded)
+                jumpState = 0;
+
+
+            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+            {
+                //calling for the pause menu
+            }
+
+
             if (Input.GetMouseButtonDown(0)) {
                 anim.Play("double_chop");
 
@@ -138,6 +152,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             float v = Input.GetAxis("Vertical");
             bool crouch = Input.GetKey(KeyCode.C);
 
+
             // calculate move direction to pass to character
             if (m_Cam != null)
             {
@@ -156,7 +171,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 #endif
             
             // pass all parameters to the character control script
-            m_Character.Move(0.5f * m_Move*moveFactor, crouch, m_Jump);
+            m_Character.Move(0.5f * m_Move*moveFactor, crouch, m_Jump,jumpState);
             m_Jump = false;
         }
     }

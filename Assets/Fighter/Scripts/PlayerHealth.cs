@@ -40,6 +40,7 @@ public class PlayerHealth : MonoBehaviour
         {
             currentHealth = 100;
         }
+
     }
 
     void takeHit()
