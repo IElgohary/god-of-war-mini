@@ -1161,7 +1161,13 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed by
+    Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
+    'mixamorig:LeftHandThumb2'\n\tTransform 'mixamorig:LeftHandIndex1'\n\tTransform
+    'mixamorig:LeftHandPinky2'\n\tTransform 'mixamorig:RightHandRing2'\n\tTransform
+    'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform 'mixamorig:LeftHandThumb3'\n\tTransform
+    'mixamorig:RightArm'\n\tand more ...\n\tFrom animation clip 'Block'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -1272,6 +1278,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 512
+  skillPoints: 0
 --- !u!114 &339367774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1285,6 +1292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 50
   timeSinceLastHit: 2
+  currentHealth: 0
 --- !u!1 &395307487
 GameObject:
   m_ObjectHideFlags: 0
@@ -2612,6 +2620,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -184.155
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ca09782eaa23be841b8cb2931b6c7217, type: 3}
+      propertyPath: m_TagString
+      value: Kratos Blade
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca09782eaa23be841b8cb2931b6c7217, type: 3}
   m_IsPrefabAsset: 0
@@ -3634,6 +3646,23 @@ Transform:
   m_Father: {fileID: 1248570576}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1354211322 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: ca09782eaa23be841b8cb2931b6c7217,
+    type: 3}
+  m_PrefabInternal: {fileID: 1998811156}
+--- !u!65 &1354211323
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1354211322}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.05, y: 0.5, z: 0.8}
+  m_Center: {x: 0, y: 0, z: -0.3}
 --- !u!1 &1365135303
 GameObject:
   m_ObjectHideFlags: 0
@@ -4261,6 +4290,23 @@ Transform:
   m_Father: {fileID: 1611992886}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1671902256 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: ca09782eaa23be841b8cb2931b6c7217,
+    type: 3}
+  m_PrefabInternal: {fileID: 843371720}
+--- !u!65 &1671902257
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1671902256}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.05, y: 0.5, z: 0.8}
+  m_Center: {x: 0, y: 0, z: -0.3}
 --- !u!1 &1684086550
 GameObject:
   m_ObjectHideFlags: 0
@@ -5168,6 +5214,10 @@ Prefab:
     - target: {fileID: 400000, guid: ca09782eaa23be841b8cb2931b6c7217, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -184.155
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ca09782eaa23be841b8cb2931b6c7217, type: 3}
+      propertyPath: m_TagString
+      value: Kratos Blade
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca09782eaa23be841b8cb2931b6c7217, type: 3}
