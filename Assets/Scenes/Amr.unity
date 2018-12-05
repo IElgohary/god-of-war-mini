@@ -1283,7 +1283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 187ca2f179e18b54aae15617cf18b248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 100
+  startingHealth: 50
   timeSinceLastHit: 2
 --- !u!1 &395307487
 GameObject:
@@ -2562,11 +2562,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ca09782eaa23be841b8cb2931b6c7217, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0021
+      value: 0.00184
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ca09782eaa23be841b8cb2931b6c7217, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.0007
+      value: 0.00068
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ca09782eaa23be841b8cb2931b6c7217, type: 3}
       propertyPath: m_LocalRotation.x
