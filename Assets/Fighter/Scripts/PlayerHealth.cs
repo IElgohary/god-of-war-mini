@@ -1,15 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public Slider healthSlider;
     public int startingHealth = 100;
     public float timeSinceLastHit = 2f;
     private float timer = 0f;
     private CharacterController characterController;
     private Animator anim;
-    private int currentHealth;
+    public int currentHealth;
 
     // Use this for initialization
     void Start()
@@ -34,6 +36,10 @@ public class PlayerHealth : MonoBehaviour
                 timer = 0;
             }
 
+        if (other.tag == "Chest")
+        {
+            currentHealth = 100;
+        }
     }
 
     void takeHit()
@@ -43,7 +49,7 @@ public class PlayerHealth : MonoBehaviour
             //GameManager.instance.PlayerHit(currentHealth);
             anim.Play("Hurt");
             currentHealth -= 10;
-
+            healthSlider.value = currentHealth;
         }
         if (currentHealth <= 0)
         {
