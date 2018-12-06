@@ -298,6 +298,11 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114312580532103664, guid: 9b2d0a38ad997a947ab489e3a65c2b24,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Youssef_GamePlay
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b2d0a38ad997a947ab489e3a65c2b24, type: 2}
   m_IsPrefabAsset: 0
