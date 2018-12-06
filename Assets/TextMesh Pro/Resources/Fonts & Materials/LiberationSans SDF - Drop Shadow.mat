@@ -50,7 +50,7 @@ Material:
     - _ColorMask: 15
     - _Diffuse: 0.5
     - _DiffusePower: 1
-    - _FaceDilate: -0.03
+    - _FaceDilate: 0.11
     - _FaceUVSpeedX: 0
     - _FaceUVSpeedY: 0
     - _GlowInner: 0.05
@@ -69,7 +69,7 @@ Material:
     - _Reflectivity: 10
     - _ScaleRatioA: 0.9
     - _ScaleRatioB: 0.73125
-    - _ScaleRatioC: 0.25275
+    - _ScaleRatioC: 0.34175676
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
@@ -81,7 +81,7 @@ Material:
     - _StencilWriteMask: 255
     - _TextureHeight: 1024
     - _TextureWidth: 1024
-    - _UnderlayDilate: 1
+    - _UnderlayDilate: -0.15
     - _UnderlayOffsetX: -1
     - _UnderlayOffsetY: -1
     - _UnderlaySoftness: 1
