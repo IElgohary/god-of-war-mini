@@ -491,7 +491,7 @@ Prefab:
     - target: {fileID: 54240067765599044, guid: c175fad3928554149889fc5cc6df9102,
         type: 2}
       propertyPath: m_Drag
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 54240067765599044, guid: c175fad3928554149889fc5cc6df9102,
         type: 2}
@@ -536,7 +536,12 @@ Prefab:
     - target: {fileID: 114360665933509838, guid: c175fad3928554149889fc5cc6df9102,
         type: 2}
       propertyPath: m_JumpPower
-      value: 20
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114360665933509838, guid: c175fad3928554149889fc5cc6df9102,
+        type: 2}
+      propertyPath: m_MoveSpeedMultiplier
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c175fad3928554149889fc5cc6df9102, type: 2}
