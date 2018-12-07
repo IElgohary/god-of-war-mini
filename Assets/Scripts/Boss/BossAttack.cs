@@ -9,7 +9,7 @@ public class BossAttack : MonoBehaviour {
     public float timeBetweenAttacks = 5f;
     [Tooltip("Weapon colliders of the boss.")]
     public Collider[] weaponColliders;
-    
+
     private Animator anim;
     private GameObject player;
     private bool playerInRange;
@@ -40,7 +40,7 @@ public class BossAttack : MonoBehaviour {
 	}
 
     IEnumerator attack(){
-        if(playerInRange && attacks.Length > 0 && !GameManager.instance.gameOver && bossHealth.isAlive){
+        if(playerInRange && attacks.Length > 0 && !GameManager.instance.gameOver && bossHealth.isAlive && !bossHealth.isStunned){
             int attackIndex = Random.Range(0, attacks.Length);
             anim.Play(attacks[attackIndex]);
             if (!attacks[attackIndex].Equals("Flame Attack")){
@@ -55,6 +55,9 @@ public class BossAttack : MonoBehaviour {
         StartCoroutine(attack());
     }
 
+    public void disableFlames() {
+        flames.SetActive(false);
+    }
 
     public void StartFlames() {
         flames.SetActive(true);

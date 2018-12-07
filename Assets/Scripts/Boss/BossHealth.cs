@@ -11,6 +11,8 @@ public class BossHealth : MonoBehaviour
     public bool isAlive;
     [Tooltip("Current health of the boss.")]
     public int currentHealth;
+    [Tooltip("is boss stunend?")]
+    public bool isStunned = false;
 
     private int startingHealth = 200;
     private float timeSinceLastHit = 1f;
@@ -20,6 +22,7 @@ public class BossHealth : MonoBehaviour
     private NavMeshAgent nav;
     private Rigidbody rigidBody;
     private bool dissapearEnemy = false;
+
 
 
     // Use this for initialization
@@ -66,8 +69,8 @@ public class BossHealth : MonoBehaviour
     public void weakPoint() {
         if (currentHealth > 0)
         {
-            anim.Play("Get Hit");
-            currentHealth -= 10;
+
+            currentHealth -= 30;
         }
 
         if (currentHealth <= 0)
@@ -75,13 +78,13 @@ public class BossHealth : MonoBehaviour
             isAlive = false;
             KillBoss();
         }
-        stunt();
+        StartCoroutine(stun());
     }
 
     void KillBoss() {
         nav.enabled = false;
         anim.Play("Die");
-
+        anim.SetBool("isStunned", true);
         StartCoroutine(removeBoss());
     }
 
@@ -92,10 +95,22 @@ public class BossHealth : MonoBehaviour
         Destroy(gameObject);
     }
 
-    IEnumerable stunt(){
-        anim.SetTrigger("isStunned");
-        yield return new WaitForSeconds(5);
-        //anim.ResetTrigger("isStunned");
+    IEnumerator stun(){
+
+        anim.SetBool("isStunned", true);
+
+        isStunned = true;
+        try
+        {
+            GameObject.FindGameObjectWithTag("Flames").SetActive(false);
+        }
+        catch (System.Exception ex) {}
+
+        yield return new WaitForSeconds(10);
+        anim.SetBool("isStunned", false);
+        isStunned = false;
+        yield return new WaitForSeconds(0.1f);
+
     }
 
 }

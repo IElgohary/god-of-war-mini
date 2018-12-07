@@ -39,11 +39,21 @@ public class PlayerHealth : MonoBehaviour
             timer += Time.deltaTime;
         }
     }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if(collision.gameObject.tag == "Boss"){
+            rig.isKinematic = true;
+            rig.velocity = Vector3.zero;
+            rig.isKinematic = false;
+        }
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         //to be modified after taggs are set for all bosses
-        if (timer >= timeSinceLastHit && !GameManager.instance.gameOver)
-            
+        if (timer >= timeSinceLastHit && !GameManager.instance.gameOver){
 
             if (other.tag == "DamageDoer" || other.tag == "Flames")
             {
@@ -51,9 +61,10 @@ public class PlayerHealth : MonoBehaviour
                 timer = 0;
             }
 
-        if (other.tag == "Chest")
-        {
-            currentHealth = 100;
+            if (other.tag == "Chest")
+            {
+                currentHealth = 100;
+            }
         }
 
     }
@@ -66,7 +77,7 @@ public class PlayerHealth : MonoBehaviour
         
         
 
-        if (currentHealth > 0 &&!shield)
+        if (currentHealth > 0 && !shield)
         {
 
             GameManager.instance.PlayerHit(currentHealth);
