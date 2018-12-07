@@ -28,12 +28,20 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private bool rageBool = false;
         private bool Shield = false;
         public int jumpState;
+        private bool CrouchAndHit = false;
+        private BoxCollider[] weaponColliders;
+        public bool lightAttack;
+        public bool heavyAttack;
+
+
+
 
 
         private void Start()
         {
             healthScript = gameObject.GetComponent<PlayerHealth>();
             health = healthScript.currentHealth;
+            weaponColliders = GetComponentsInChildren<BoxCollider>();
             anim = GetComponent<Animator>();
             // get the transform of the main camera
             if (Camera.main != null)
@@ -61,6 +69,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             }
 
         }
+
+
         private void updateXP()
         {
             XP = XP + 50;
@@ -81,99 +91,134 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 case 3: health += 10; healthScript.currentHealth = health; break;
             }
         }
+
+        private void LightAttackBegin()
+        {
+            foreach (var weapon in weaponColliders)
+            {
+                weapon.enabled = true;
+            }
+        }
+
+        private void LightAttackEnd()
+        {
+            foreach (var weapon in weaponColliders)
+            {
+                weapon.enabled = false;
+            }
+        }
+
+        private void PlayerBeginAttack()
+        {
+            foreach (var weapon in weaponColliders)
+            {
+                weapon.enabled = true;
+                heavyAttack = true;
+
+            }
+        }
+        private void PlayerEndAttack()
+        {
+            foreach (var weapon in weaponColliders)
+            {
+                weapon.enabled = false;
+                heavyAttack = false;
+            }
+        }
         private void Update()
         {
-            if (!m_Jump)
+            if (!GameManager.instance.gameOver)
             {
-                m_Jump = Input.GetButtonDown("Jump");
-
-            }
-            if (m_Jump)
-                jumpState++;
-
-            if (m_Character.m_IsGrounded)
-                jumpState = 0;
-
-
-            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
-            {
-                //calling for the pause menu
-            }
-
-
-            if (Input.GetMouseButtonDown(0)) {
-                anim.Play("double_chop");
-
-
-            }
-            if (Input.GetMouseButtonDown(1)) {
-                anim.Play("Standing Melee Kick");
-
-            }
-
-            Shield = Input.GetKeyDown(KeyCode.LeftControl);
-            anim.SetBool("Shield", Shield);
-
-
-
-            if (Input.GetKeyDown(KeyCode.R)){
-                if (rageBool)
+                if (!m_Jump)
                 {
-                    damage *= 2f;
-                    rageMeter = 0;
-                    rageBool = false;
+                    m_Jump = Input.GetButtonDown("Jump");
                 }
-            }
 
+                if (m_Jump)
+                    jumpState++;
+
+                if (m_Character.m_IsGrounded)
+                    jumpState = 0;
+
+
+                if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+                {
+                    //calling for the pause menu
+                }
+
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                   anim.Play("Attack1");
+                }
+
+                if (Input.GetMouseButtonDown(1))
+                {
+                    anim.Play("Dual Weapon Combo");
+                }
+
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    if (rageBool)
+                    {
+                        damage *= 2f;
+                        rageMeter = 0;
+                        rageBool = false;
+                    }
+                }
+
+            }
         }
         private void FixedUpdate()
         {
             //CAMERA ACCORDING TO MOUSE
-
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Debug.DrawRay(ray.origin,ray.direction *300,Color.blue); 
-            if(Physics.Raycast(ray,out hit,300,layerMask,QueryTriggerInteraction.Ignore))
+            if (!GameManager.instance.gameOver)
             {
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                Debug.DrawRay(ray.origin, ray.direction * 300, Color.blue);
+                if (Physics.Raycast(ray, out hit, 300, layerMask, QueryTriggerInteraction.Ignore))
+                {
 
-			if(hit.point != currLooktarget){
-				currLooktarget= hit.point;
-			}
+                    if (hit.point != currLooktarget)
+                    {
+                        currLooktarget = hit.point;
+                    }
 
-			Vector3 targetPosition = new Vector3(hit.point.x,transform.position.y,hit.point.z);
-			Quaternion rotation = Quaternion.LookRotation(targetPosition-transform.position);
-			transform.rotation = Quaternion.Lerp(transform.rotation,rotation,Time.deltaTime);
+                    Vector3 targetPosition = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+                    Quaternion rotation = Quaternion.LookRotation(targetPosition - transform.position);
+                    transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime);
 
-		}
+                }
 
-            // read inputs
+                // read inputs
 
-            float h = Input.GetAxis("Horizontal");
-            float v = Input.GetAxis("Vertical");
-            bool crouch = Input.GetKey(KeyCode.C);
+                float h = Input.GetAxis("Horizontal");
+                float v = Input.GetAxis("Vertical");
+                bool crouch = Input.GetKey(KeyCode.C);
 
 
-            // calculate move direction to pass to character
-            if (m_Cam != null)
-            {
-                // calculate camera relative direction to move:
-                m_CamForward = Vector3.Scale(m_Cam.forward, new Vector3(1, 0, 1)).normalized;
-                m_Move = v*m_CamForward + h*m_Cam.right;
-            }
-            else
-            {
-                // we use world-relative directions in the case of no main camera
-                m_Move = v*Vector3.forward + h*Vector3.right;
-            }
+                // calculate move direction to pass to character
+                if (m_Cam != null)
+                {
+                    // calculate camera relative direction to move:
+                    m_CamForward = Vector3.Scale(m_Cam.forward, new Vector3(1, 0, 1)).normalized;
+                    m_Move = v * m_CamForward + h * m_Cam.right;
+                }
+                else
+                {
+                    // we use world-relative directions in the case of no main camera
+                    m_Move = v * Vector3.forward + h * Vector3.right;
+                }
 #if !MOBILE_INPUT
-			// walk speed multiplier
-	        if (Input.GetKey(KeyCode.LeftShift)) m_Move *= 3.0f;
+                // walk speed multiplier
+                if (Input.GetKey(KeyCode.LeftShift)) m_Move *= 3.0f;
 #endif
-            
-            // pass all parameters to the character control script
-            m_Character.Move(0.5f * m_Move*moveFactor, crouch, m_Jump,jumpState);
-            m_Jump = false;
+
+                // pass all parameters to the character control script
+                m_Character.Move(0.5f * m_Move * moveFactor, crouch, m_Jump, jumpState);
+                m_Jump = false;
+            }
         }
     }
 }
-

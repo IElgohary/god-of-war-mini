@@ -5,34 +5,49 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public Slider healthSlider;
+    //public Slider healthSlider;
     public int startingHealth = 100;
     public float timeSinceLastHit = 2f;
     private float timer = 0f;
-    private CharacterController characterController;
     private Animator anim;
     public int currentHealth;
-
+    private AudioSource audio;
+    private CapsuleCollider collider;
+    private Rigidbody rig;
+    public bool shield;
     // Use this for initialization
     void Start()
     {
+        collider = gameObject.GetComponent<CapsuleCollider>();
+        audio = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
-        characterController = GetComponent<CharacterController>();
         currentHealth = startingHealth;
+        rig = gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
+        if (!GameManager.instance.gameOver)
+        {
+            shield = Input.GetKey(KeyCode.LeftControl);
+            if (shield)
+            {
+                anim.Play("Shield");
+            }
+
+            timer += Time.deltaTime;
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
         //to be modified after taggs are set for all bosses
-        if (timer >= timeSinceLastHit)
+        if (timer >= timeSinceLastHit && !GameManager.instance.gameOver)
+            
+
             if (other.tag == "Weapon")
             {
-                takeHit();
+                takeHit(shield);
                 timer = 0;
             }
 
@@ -42,15 +57,23 @@ public class PlayerHealth : MonoBehaviour
         }
 
     }
-
-    void takeHit()
+    private void FixedUpdate()
     {
-        if (currentHealth > 0)
+       
+    }
+    void takeHit(bool Shield)
+    {
+        
+        
+
+        if (currentHealth > 0 &&!shield)
         {
-            //GameManager.instance.PlayerHit(currentHealth);
+
+            GameManager.instance.PlayerHit(currentHealth);
             anim.Play("Hurt");
             currentHealth -= 10;
-            healthSlider.value = currentHealth;
+            audio.PlayOneShot(audio.clip);
+           // healthSlider.value = currentHealth;
         }
         if (currentHealth <= 0)
         {
@@ -61,8 +84,12 @@ public class PlayerHealth : MonoBehaviour
     }
     void killPlayer()
     {
-        //GameManager.instance.PlayerHit(currentHealth);
+        GameManager.instance.PlayerHit(currentHealth);
+        collider.enabled = false;
         anim.SetTrigger("herodie");
-        //characterController.enabled = false;
+        rig.isKinematic = false;
+        rig.useGravity = false;
+        //
+     //  characterController.enabled = false;
     }
 }
