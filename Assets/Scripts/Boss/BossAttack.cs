@@ -6,7 +6,7 @@ public class BossAttack : MonoBehaviour {
     [Tooltip("Attack range of the boss.")]
     public float range = 5.2f;
     [Tooltip("Time (in seconds) to wait between attacks.")]
-    public float timeBetweenAttacks = 2f;
+    public float timeBetweenAttacks = 5f;
     [Tooltip("Weapon colliders of the boss.")]
     public Collider[] weaponColliders;
     
@@ -16,6 +16,7 @@ public class BossAttack : MonoBehaviour {
     private string[] attacks = { "Basic Attack", "Claw Attack", "Flame Attack"};
     private BossHealth bossHealth;
     private GameObject flames;
+
 
 
     // Use this for initialization
@@ -36,7 +37,6 @@ public class BossAttack : MonoBehaviour {
         } else {
             playerInRange = false;
         }
-        
 	}
 
     IEnumerator attack(){

@@ -8,6 +8,9 @@ public class BossMove : MonoBehaviour {
     public Transform player;
     [Tooltip("Distance between enemy and player.")]
     public float offset;
+    [Tooltip("Should the boss move?.")]
+    public bool canMove;
+
 
     private NavMeshAgent nav;
     private Animator anim;
@@ -22,7 +25,7 @@ public class BossMove : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(!GameManager.instance.gameOver && bossHealth.isAlive){
+        if(!GameManager.instance.gameOver && bossHealth.isAlive && canMove){
             float distance = Vector3.Distance(player.position, transform.position);
             nav.SetDestination(player.position);
             if (distance > offset)

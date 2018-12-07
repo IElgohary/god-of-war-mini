@@ -14,7 +14,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public float m_RunCycleLegOffset = 0.2f; //specific to the character in sample assets, will need to be modified to work with others
         public float m_MoveSpeedMultiplier = 1f;
         public float m_AnimSpeedMultiplier = 1f;
-        public float m_GroundCheckDistance = 0.1f;
+        public float m_GroundCheckDistance = 1f;
  
 
         Rigidbody m_Rigidbody;
@@ -175,10 +175,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			if (jump && !crouch)
 			{
 				// jump!
-				m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x, m_JumpPower, m_Rigidbody.velocity.z);
+				m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x , m_JumpPower, m_Rigidbody.velocity.z);
 				m_IsGrounded = false;
 				m_Animator.applyRootMotion = false;
-				m_GroundCheckDistance = 0.1f;
+				m_GroundCheckDistance = 1f;
 			}
 		}
 

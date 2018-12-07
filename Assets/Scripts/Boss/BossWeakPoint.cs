@@ -10,6 +10,7 @@ public class BossWeakPoint : MonoBehaviour {
     private BossAttack bossAttack;
     private float timeSinceLastHit = 10f;
     private float timer = 0f;
+    private int timesHit = 0;
 
     // Use this for initialization
     void Start () {
@@ -29,10 +30,12 @@ public class BossWeakPoint : MonoBehaviour {
             if (other.tag == "PlayerWeapon")
             {
                 timer = 0f;
-                bossHealth.weakPoint();
-                bossAttack.disableAttack(attackName);
-                Destroy(gameObject);
-
+                timesHit++;
+                if (timesHit == 3){
+                    bossHealth.weakPoint();
+                    bossAttack.disableAttack(attackName);
+                    Destroy(gameObject);
+                }
             }
         }
     }

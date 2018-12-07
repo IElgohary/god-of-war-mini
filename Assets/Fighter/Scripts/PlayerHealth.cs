@@ -45,7 +45,7 @@ public class PlayerHealth : MonoBehaviour
         if (timer >= timeSinceLastHit && !GameManager.instance.gameOver)
             
 
-            if (other.tag == "Weapon")
+            if (other.tag == "DamageDoer" || other.tag == "Flames")
             {
                 takeHit(shield);
                 timer = 0;
