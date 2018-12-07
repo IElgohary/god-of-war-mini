@@ -8,23 +8,22 @@ public class RangedEnemyAttack : MonoBehaviour
     public float range = 5.2f;
     [Tooltip("Time (in seconds) to wait between attacks.")]
     public float timeBetweenAttacks = 2f;
-    [Tooltip("Weapon colliders of the boss.")]
-    public Collider[] weaponColliders;
-
+    public Transform fireLocation;
     private Animator anim;
     private GameObject player;
     private bool playerInRange;
     private string[] attacks = { "Ranged Attack"};
-    private RangedEnemyHealth bossHealth;
-
+    private BossHealth enemyHealth;
+    public GameObject arrow ;
 
     // Use this for initialization
     void Start()
     {
+        // arrow = GameObject.instance.Arrow;
         player = GameManager.instance.player;
         anim = GetComponent<Animator>();
         StartCoroutine(attack());
-        bossHealth = GetComponent<RangedEnemyHealth>();
+        enemyHealth = GetComponent<BossHealth>();
     }
 
     // Update is called once per frame
@@ -33,18 +32,20 @@ public class RangedEnemyAttack : MonoBehaviour
         if (Vector3.Distance(transform.position, player.transform.position) < range)
         {
             playerInRange = true;
+            anim.SetBool("playerInRange",true);
             rotateTowards(player.transform);
         }
         else
         {
             playerInRange = false;
+            anim.SetBool("playerInRange",false);
         }
 
     }
 
     IEnumerator attack()
     {
-        if (playerInRange && attacks.Length > 0 && !GameManager.instance.gameOver && bossHealth.isAlive)
+        if (playerInRange  && !GameManager.instance.gameOver && enemyHealth.isAlive)
         {
             int attackIndex = Random.Range(0, attacks.Length);
             anim.Play(attacks[attackIndex]);
@@ -57,36 +58,24 @@ public class RangedEnemyAttack : MonoBehaviour
     }
 
 
-    public void StartClaws()
-    {
-        weaponColliders[1].enabled = true;
-    }
-
-    public void StopClaws()
-    {
-        weaponColliders[1].enabled = false;
-    }
-
-
-
-    public void disableAttack(string name)
-    {
-        string[] tmp = new string[attacks.Length - 1];
-        int idx = 0;
-        foreach (string attackName in attacks)
-        {
-            if (!attackName.Equals(name))
-            {
-                if (idx >= tmp.Length)
-                {
-                    break;
-                }
-                tmp[idx] = attackName;
-                idx++;
-            }
-        }
-        attacks = tmp;
-    }
+    // public void disableAttack(string name)
+    // {
+    //     string[] tmp = new string[attacks.Length - 1];
+    //     int idx = 0;
+    //     foreach (string attackName in attacks)
+    //     {
+    //         if (!attackName.Equals(name))
+    //         {
+    //             if (idx >= tmp.Length)
+    //             {
+    //                 break;
+    //             }
+    //             tmp[idx] = attackName;
+    //             idx++;
+    //         }
+    //     }
+    //     attacks = tmp;
+    // }
 
     private void rotateTowards(Transform player)
     {
@@ -94,5 +83,11 @@ public class RangedEnemyAttack : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 1f);
     }
-
+    public void FireArrow ()
+    {
+        GameObject newArrow = Instantiate (arrow ) as GameObject ;
+        newArrow.transform.position = fireLocation.position;
+        newArrow.transform.rotation = transform.rotation;
+        newArrow.GetComponent<Rigidbody>().velocity = transform.forward * 25f ;
+    }
 }
