@@ -25,7 +25,7 @@ public class BossMove : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(!GameManager.instance.gameOver && bossHealth.isAlive && canMove){
+        if(!GameManager.instance.gameOver && bossHealth.isAlive && canMove && !bossHealth.isStunned){
             float distance = Vector3.Distance(player.position, transform.position);
             nav.SetDestination(player.position);
             if (distance > offset)

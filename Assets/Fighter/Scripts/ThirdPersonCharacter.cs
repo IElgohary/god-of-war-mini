@@ -201,6 +201,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				// we preserve the existing y part of the current velocity.
 				v.y = m_Rigidbody.velocity.y;
 				m_Rigidbody.velocity = v;
+
 			}
 		}
 

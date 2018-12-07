@@ -5,10 +5,12 @@ using UnityEngine;
 public class BossWeakPoint : MonoBehaviour {
     [Tooltip("Name of the attack related to this weakpoint.")]
     public string attackName;
-
+    [Tooltip("number of hits to a weakpoint before it's destroyed.")]
+    public int weakPtsCount = 3;
     private BossHealth bossHealth;
     private BossAttack bossAttack;
-    private float timeSinceLastHit = 10f;
+    private Animator anim;
+    private float timeSinceLastHit = 3f;
     private float timer = 0f;
     private int timesHit = 0;
 
@@ -16,6 +18,7 @@ public class BossWeakPoint : MonoBehaviour {
     void Start () {
         bossHealth = GameObject.FindWithTag("Boss").GetComponent<BossHealth>();
         bossAttack = GameObject.FindWithTag("Boss").GetComponent<BossAttack>();
+        anim = GameObject.FindWithTag("Boss").GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
@@ -25,16 +28,19 @@ public class BossWeakPoint : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (timer >= timeSinceLastHit && !GameManager.instance.gameOver)
+        if (timer >= timeSinceLastHit && !GameManager.instance.gameOver && !bossHealth.isStunned)
         {
             if (other.tag == "PlayerWeapon")
             {
                 timer = 0f;
                 timesHit++;
-                if (timesHit == 3){
+                anim.Play("Get Hit");
+                bossAttack.disableFlames();
+                if (timesHit == weakPtsCount){
                     bossHealth.weakPoint();
                     bossAttack.disableAttack(attackName);
                     Destroy(gameObject);
+
                 }
             }
         }
