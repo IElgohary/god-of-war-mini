@@ -24,7 +24,7 @@ public class GameUI : MonoBehaviour {
 
 
     void Check_Escape() {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
             if (game_Paused)
                 Resume(); 
