@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 
@@ -15,7 +16,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public LayerMask layerMask;
         Vector3 currLooktarget = Vector3.zero;
         private Animator anim;
-        private float damage = 1.0f;
+        private float damageFactor = 1.0f;
         private float moveFactor = 1.0f;
         private PlayerHealth healthScript;
         private int health;
@@ -32,10 +33,25 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private BoxCollider[] weaponColliders;
         public bool lightAttack;
         public bool heavyAttack;
+        private bool hittingWeakPoint;
 
 
 
+        public int GetDamage(){
+            //if (hittingWeakPoint) return 40;
+            float damage = 0;
+            if (heavyAttack) damage = 30;
+            if (lightAttack) damage = 10;
+            damage *= damageFactor;
+            if (rageBool) damage *= 2;
+            return (int) damage;
+        }
 
+        //private void OnTriggerEnter(Collider other)
+        //{
+        //    if (other.tag == "WeakPts") hittingWeakPoint = true;
+        //    else hittingWeakPoint = false;
+        //}
 
         private void Start()
         {
@@ -64,7 +80,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             if (rageMeter >= 100)
             {
                 rageMeter = 100;
-                rageBool = true;
 
             }
 
@@ -87,7 +102,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             switch (x)
             {
                 case 1: moveFactor += 0.1f; break;
-                case 2: damage += 0.1f; break;
+                case 2: damageFactor += 0.1f; break;
                 case 3: health += 10; healthScript.currentHealth = health; break;
             }
         }
@@ -97,6 +112,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             foreach (var weapon in weaponColliders)
             {
                 weapon.enabled = true;
+                lightAttack = true;
             }
         }
 
@@ -105,6 +121,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             foreach (var weapon in weaponColliders)
             {
                 weapon.enabled = false;
+                lightAttack = false;
             }
         }
 
@@ -123,6 +140,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             {
                 weapon.enabled = false;
                 heavyAttack = false;
+
             }
         }
         private void Update()
@@ -159,16 +177,27 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
                 if (Input.GetKeyDown(KeyCode.R))
                 {
-                    if (rageBool)
+                    if (rageMeter == 100)
                     {
-                        damage *= 2f;
-                        rageMeter = 0;
-                        rageBool = false;
+                        rageBool = true;
+                        StartCoroutine(reduceRage());
                     }
                 }
 
             }
         }
+
+        IEnumerator reduceRage()
+        {
+            yield return new WaitForSeconds(0.05f);
+            rageMeter -= 1;
+            if(rageMeter == 0) {
+                rageBool = false;
+            }
+
+
+        }
+
         private void FixedUpdate()
         {
             //CAMERA ACCORDING TO MOUSE
