@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e37634d64768a4d019a7d05f24447d5c
+guid: 0f785d23e6c1e494e8c261e0d944fa46
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -7,12 +7,11 @@ ModelImporter:
     100002: //RootNode
     400000: default
     400002: //RootNode
-    2100000: mh_1997_26_2
-    2100002: defaultMat
+    2100000: leafage
+    2100002: statue
     2300000: default
     3300000: default
     4300000: default
-    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 1
