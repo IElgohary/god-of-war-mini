@@ -95,7 +95,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             {
                 case 1: moveFactor += 0.1f; break;
                 case 2: damageFactor += 0.1f; break;
-                case 3: health += 10; healthScript.currentHealth = health; break;
+                case 3: healthScript.maxHealth += 10; break;
             }
         }
 

@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 82315115962188682}
   m_Layer: 0
   m_Name: kratos
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1352,7 +1352,7 @@ GameObject:
   - component: {fileID: 65306810189455846}
   m_Layer: 0
   m_Name: blade
-  m_TagString: Kratos Blade
+  m_TagString: PlayerWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1860,7 +1860,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1748533255318074}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.0148, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4382540439178092}
@@ -2197,8 +2197,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1104622804784326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1705.51, y: 48.49, z: 835.17}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalPosition: {x: 0.89, y: 0.05, z: -73}
+  m_LocalScale: {x: 120, y: 120, z: 120}
   m_Children:
   - {fileID: 4055335562620452}
   - {fileID: 4542266416813928}
@@ -3098,9 +3098,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 4b56ee925a2ec8c45b87d209116f2e35, type: 2}
-  - {fileID: 2100000, guid: 5ad91a287f2784449ac8be4e69ccb163, type: 2}
-  - {fileID: 2100000, guid: 680fc99a8a7f9f34fab0c2ea44be35d0, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3477,13 +3477,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MovingTurnSpeed: 360
-  m_StationaryTurnSpeed: 180
+  m_StationaryTurnSpeed: 360
   m_JumpPower: 10
-  m_GravityMultiplier: 2
+  m_GravityMultiplier: 2.45
   m_RunCycleLegOffset: 0.2
   m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
-  m_GroundCheckDistance: 0.1
+  m_GroundCheckDistance: 1
   m_IsGrounded: 0
 --- !u!114 &114952668848915668
 MonoBehaviour:
@@ -3496,10 +3496,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 187ca2f179e18b54aae15617cf18b248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 20
+  startingHealth: 100
   timeSinceLastHit: 2
   currentHealth: 20
   shield: 0
+  maxHealth: 100
 --- !u!136 &136013867224032264
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        // Check how much damage Kratos currently inflicts 
         if(!hittingWeakPoint){
             damage = player.GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl>().GetDamage();
         } else {
@@ -39,11 +40,15 @@ public class GameManager : MonoBehaviour {
         }
 	}
 
-    public void PlayerHit(int currentHP){
-        if(currentHP > 0) {
-            gameOver = false;
-        } else {
+    public void HealKratos(){
+        player.GetComponent<PlayerHealth>().Heal();
+    }
+
+    public void IsGameOver(int currentHP){
+        if(currentHP <= 0) {
             gameOver = true;
+        } else {
+            gameOver = false;
         }
     }
 }

@@ -47,7 +47,7 @@ public class BossHealth : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other) {
-        if(timer >= timeSinceLastHit && !GameManager.instance.gameOver) {
+        if(timer >= timeSinceLastHit && !GameManager.instance.gameOver && !isStunned) {
             if(other.tag == "PlayerWeapon") {
                 takeHit(GameManager.instance.damage);
                 timer = 0f;
@@ -97,7 +97,7 @@ public class BossHealth : MonoBehaviour
         }
         catch (System.Exception ex) {}
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(8);
         anim.SetBool("isStunned", false);
         isStunned = false;
         yield return new WaitForSeconds(0.1f);

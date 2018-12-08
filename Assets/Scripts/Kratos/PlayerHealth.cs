@@ -15,6 +15,7 @@ public class PlayerHealth : MonoBehaviour
     private CapsuleCollider collider;
     private Rigidbody rig;
     public bool shield;
+    public int maxHealth = 100;
     // Use this for initialization
     void Start()
     {
@@ -35,9 +36,23 @@ public class PlayerHealth : MonoBehaviour
             {
                 anim.Play("Shield");
             }
-
+            if(transform.position.y < -5) {
+                currentHealth = 0;
+                GameManager.instance.IsGameOver(currentHealth);
+            }
             timer += Time.deltaTime;
         }
+    }
+
+    public void Heal(){
+        if (currentHealth < maxHealth) StartCoroutine(HealGradually());
+    }
+
+    IEnumerator HealGradually() {
+        yield return new WaitForSeconds(0.1f);
+        currentHealth += 1;
+        if (currentHealth > maxHealth) currentHealth = maxHealth;
+        if (currentHealth < maxHealth) StartCoroutine(HealGradually());
     }
 
     private void OnCollisionExit(Collision collision)
@@ -58,29 +73,17 @@ public class PlayerHealth : MonoBehaviour
             if (other.tag == "DamageDoer" || other.tag == "Flames")
             {
                 takeHit(shield);
-                timer = 0;
-            }
 
-            if (other.tag == "Chest")
-            {
-                currentHealth = 100;
+                timer = 0;
             }
         }
 
     }
-    private void FixedUpdate()
-    {
-       
-    }
+
     void takeHit(bool Shield)
     {
-        
-        
-
         if (currentHealth > 0 && !shield)
         {
-
-            GameManager.instance.PlayerHit(currentHealth);
             anim.Play("Hurt");
             currentHealth -= 10;
             audio.PlayOneShot(audio.clip);
@@ -89,17 +92,14 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             killPlayer();
-
         }
-
+        GameManager.instance.IsGameOver(currentHealth);
     }
+
     void killPlayer()
     {
-        GameManager.instance.PlayerHit(currentHealth);
-        collider.enabled = false;
         anim.SetTrigger("herodie");
         rig.isKinematic = false;
-        rig.useGravity = false;
         //
      //  characterController.enabled = false;
     }
