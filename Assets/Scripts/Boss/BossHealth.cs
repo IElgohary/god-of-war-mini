@@ -15,7 +15,7 @@ public class BossHealth : MonoBehaviour
     public bool isStunned = false;
 
     private int startingHealth = 200;
-    private float timeSinceLastHit = 1f;
+    private float timeSinceLastHit = 3f;
     private float dissapearSpeed = 2f;
     private float timer = 0f;
     private Animator anim;
