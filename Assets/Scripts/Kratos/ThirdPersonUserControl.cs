@@ -29,16 +29,14 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private bool rageBool = false;
         private bool Shield = false;
         public int jumpState;
-        private bool CrouchAndHit = false;
         private BoxCollider[] weaponColliders;
         public bool lightAttack;
         public bool heavyAttack;
-        private bool hittingWeakPoint;
+
 
 
 
         public int GetDamage(){
-            //if (hittingWeakPoint) return 40;
             float damage = 0;
             if (heavyAttack) damage = 30;
             if (lightAttack) damage = 10;
@@ -46,12 +44,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             if (rageBool) damage *= 2;
             return (int) damage;
         }
-
-        //private void OnTriggerEnter(Collider other)
-        //{
-        //    if (other.tag == "WeakPts") hittingWeakPoint = true;
-        //    else hittingWeakPoint = false;
-        //}
 
         private void Start()
         {
