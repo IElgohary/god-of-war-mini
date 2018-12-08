@@ -30,13 +30,13 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void ToHowToPlay() {
-        //Hide_All():
-        Debug.Log("Load HowToPlay Scene");
+        Hide_All();
+        HowToPlay_Object.SetActive(true);
     }
 
     public void ToAudioSettings() {
-        // Disable_Everything() AND:
-        Debug.Log("Load AudioSettings Scene");
+        Hide_All();
+        AudioSettings_Object.SetActive(true);    
     }
 
     public void ToCredits() {
