@@ -98,7 +98,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 2.5
+    agentRadius: 2.2
     agentHeight: 3
     agentSlope: 60
     agentClimb: 3
@@ -106,7 +106,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.8333333
+    cellSize: 0.73333335
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -183,8 +183,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageTaker: []
   isAlive: 0
-  currentHealth: 20
-  isStunned: 0
+  currentHealth: 100
+  isStunned: 1
 --- !u!114 &11187854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,6 +203,7 @@ MonoBehaviour:
   - {fileID: 294775937}
   - {fileID: 827988116}
   - {fileID: 1796892573}
+  isAttacking: 0
 --- !u!195 &11187855
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -705,9 +706,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 60.414143
-  m_Height: 253.45839
+  m_Height: 183.85414
   m_Direction: 0
-  m_Center: {x: -75.57022, y: -17.695276, z: 0.0000029272576}
+  m_Center: {x: -40.76802, y: -17.695263, z: 0.0000058382993}
 --- !u!1 &188768217
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,6 +770,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 148134722}
   gameOver: 0
+  damage: 0
+  hittingWeakPoint: 0
 --- !u!4 &190506596
 Transform:
   m_ObjectHideFlags: 0
@@ -1675,7 +1678,7 @@ GameObject:
   - component: {fileID: 982036907}
   m_Layer: 0
   m_Name: Bone_Axe
-  m_TagString: Untagged
+  m_TagString: WeakPts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7105,7 +7108,7 @@ GameObject:
   - component: {fileID: 1326408958}
   m_Layer: 0
   m_Name: Bone_Shield
-  m_TagString: Untagged
+  m_TagString: WeakPts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8176,6 +8179,62 @@ Prefab:
       propertyPath: m_Center.x
       value: -1.6212783
       objectReference: {fileID: 0}
+    - target: {fileID: 1882108412226056, guid: 461be7508c8d24ad89054edcc6e30ad6, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1594253816085792, guid: 461be7508c8d24ad89054edcc6e30ad6, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1915215709132762, guid: 461be7508c8d24ad89054edcc6e30ad6, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1915215709132762, guid: 461be7508c8d24ad89054edcc6e30ad6, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1079796244170936, guid: 461be7508c8d24ad89054edcc6e30ad6, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1079796244170936, guid: 461be7508c8d24ad89054edcc6e30ad6, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1516337638122712, guid: 461be7508c8d24ad89054edcc6e30ad6, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1516337638122712, guid: 461be7508c8d24ad89054edcc6e30ad6, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933324308102778, guid: 461be7508c8d24ad89054edcc6e30ad6, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1996262871971680, guid: 461be7508c8d24ad89054edcc6e30ad6, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487175310190854, guid: 461be7508c8d24ad89054edcc6e30ad6, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933324308102778, guid: 461be7508c8d24ad89054edcc6e30ad6, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1996262871971680, guid: 461be7508c8d24ad89054edcc6e30ad6, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487175310190854, guid: 461be7508c8d24ad89054edcc6e30ad6, type: 2}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 461be7508c8d24ad89054edcc6e30ad6, type: 2}
   m_IsPrefabAsset: 0
@@ -8288,7 +8347,7 @@ GameObject:
   - component: {fileID: 2016032348}
   m_Layer: 8
   m_Name: FlamesCrystal
-  m_TagString: Untagged
+  m_TagString: WeakPts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

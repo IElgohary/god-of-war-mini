@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour {
     public GameObject player;
     [Tooltip("A boolean specifying whether the game is over.")]
     public bool gameOver = false;
+    [Tooltip("Kratos current damage points.")]
+    public int damage = 0;
+    [Tooltip("is Kratos Hitting a weak point?")]
+    public bool hittingWeakPoint = false;
 
     void Awake(){
 
@@ -28,7 +32,11 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if(!hittingWeakPoint){
+            damage = player.GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl>().GetDamage();
+        } else {
+            damage = 40;
+        }
 	}
 
     public void PlayerHit(int currentHP){

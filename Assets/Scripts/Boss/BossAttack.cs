@@ -9,6 +9,8 @@ public class BossAttack : MonoBehaviour {
     public float timeBetweenAttacks = 5f;
     [Tooltip("Weapon colliders of the boss.")]
     public Collider[] weaponColliders;
+    [Tooltip("Is the boss currently attacking?")]
+    public bool isAttacking = false;
 
     private Animator anim;
     private GameObject player;
@@ -43,10 +45,15 @@ public class BossAttack : MonoBehaviour {
         if(playerInRange && attacks.Length > 0 && !GameManager.instance.gameOver && bossHealth.isAlive && !bossHealth.isStunned){
             int attackIndex = Random.Range(0, attacks.Length);
             anim.Play(attacks[attackIndex]);
-            if (!attacks[attackIndex].Equals("Flame Attack")){
+            if (!attacks[attackIndex].Equals("Flame Attack"))
+            {
                 flames.SetActive(false);
             }
+            isAttacking = true;
+            yield return new WaitForSeconds(1);
+            isAttacking = false;
             yield return new WaitForSeconds(timeBetweenAttacks);
+
         }
         if(attacks.Length == 0 || !playerInRange){
            flames.SetActive(false);

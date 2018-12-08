@@ -49,15 +49,17 @@ public class BossHealth : MonoBehaviour
     void OnTriggerEnter(Collider other) {
         if(timer >= timeSinceLastHit && !GameManager.instance.gameOver) {
             if(other.tag == "PlayerWeapon") {
-                takeHit();
+                takeHit(GameManager.instance.damage);
                 timer = 0f;
             }
         }
     }
 
-    void takeHit() {
-        if(currentHealth > 0) {
-            currentHealth -= 10;
+    void takeHit(int amount) {
+        if ( !gameObject.GetComponent<BossAttack>().isAttacking )
+            anim.Play("Get Hit");
+        if (currentHealth > 0) {
+            currentHealth -= amount;
         }
 
         if(currentHealth <= 0){
@@ -67,17 +69,6 @@ public class BossHealth : MonoBehaviour
     }
 
     public void weakPoint() {
-        if (currentHealth > 0)
-        {
-
-            currentHealth -= 30;
-        }
-
-        if (currentHealth <= 0)
-        {
-            isAlive = false;
-            KillBoss();
-        }
         StartCoroutine(stun());
     }
 
@@ -106,7 +97,7 @@ public class BossHealth : MonoBehaviour
         }
         catch (System.Exception ex) {}
 
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(5);
         anim.SetBool("isStunned", false);
         isStunned = false;
         yield return new WaitForSeconds(0.1f);
