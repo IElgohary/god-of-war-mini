@@ -1,13 +1,16 @@
 using System;
 using System.Collections;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
     [RequireComponent(typeof(ThirdPersonCharacter))]
     public class ThirdPersonUserControl : MonoBehaviour
     {
+        public Slider expSlider;
+        public Slider rageSlider;
+
         private ThirdPersonCharacter m_Character; // A reference to the ThirdPersonCharacter on the object
         private Transform m_Cam;                  // A reference to the main camera in the scenes transform
         private Vector3 m_CamForward;             // The current forward direction of the camera
@@ -66,9 +69,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             // get the third person character ( this should never be null due to require component )
             m_Character = GetComponent<ThirdPersonCharacter>();
         }
-        private void updateRage()
+        public void updateRage()
         {
             rageMeter += 10;
+
             if (rageMeter >= 100)
             {
                 rageMeter = 100;
@@ -78,7 +82,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         }
 
 
-        private void updateXP()
+        public void updateXP()
         {
             XP = XP + 50;
             if (XP >= 2 * PrevXP)
@@ -139,6 +143,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         {
             if (!GameManager.instance.gameOver)
             {
+                rageSlider.value = ((float)rageMeter) / 100;
+                expSlider.value = ((float)XP) / (2*PrevXP);
                 if (!m_Jump)
                 {
                     m_Jump = Input.GetButtonDown("Jump");
@@ -189,6 +195,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 
         }
+        
 
         private void FixedUpdate()
         {

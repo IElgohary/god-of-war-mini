@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    //public Slider healthSlider;
+    public Slider healthSlider;
+
     public int startingHealth = 100;
     public float timeSinceLastHit = 2f;
     private float timer = 0f;
@@ -31,6 +32,9 @@ public class PlayerHealth : MonoBehaviour
     {
         if (!GameManager.instance.gameOver)
         {
+
+
+            healthSlider.value = ((float)currentHealth) / maxHealth;
             shield = Input.GetKey(KeyCode.LeftControl);
             if (shield)
             {
@@ -87,7 +91,6 @@ public class PlayerHealth : MonoBehaviour
             anim.Play("Hurt");
             currentHealth -= 10;
             audio.PlayOneShot(audio.clip);
-           // healthSlider.value = currentHealth;
         }
         if (currentHealth <= 0)
         {

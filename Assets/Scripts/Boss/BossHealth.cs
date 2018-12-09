@@ -77,6 +77,7 @@ public class BossHealth : MonoBehaviour
         anim.Play("Die");
         anim.SetBool("isStunned", true);
         StartCoroutine(removeBoss());
+        GameManager.instance.EnemyDead();
     }
 
     IEnumerator removeBoss(){

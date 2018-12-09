@@ -59,6 +59,7 @@ public class GameUI : MonoBehaviour {
 
 
     public void To_Upgrade() {
+        Debug.Log("DAISODHASDJ");
         Hide_Everything();
         Upgrade.SetActive(true);
         Time.timeScale = 0.0f;

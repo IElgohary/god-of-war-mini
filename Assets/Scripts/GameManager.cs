@@ -40,6 +40,11 @@ public class GameManager : MonoBehaviour {
         }
 	}
 
+    public void EnemyDead() {
+        player.GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl>().updateXP();
+        player.GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl>().updateRage();
+    }
+
     public void HealKratos(){
         player.GetComponent<PlayerHealth>().Heal();
     }
