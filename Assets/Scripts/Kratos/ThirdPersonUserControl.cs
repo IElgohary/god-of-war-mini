@@ -143,8 +143,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         {
             if (!GameManager.instance.gameOver)
             {
-                rageSlider.value = ((float)rageMeter) / 100;
-                expSlider.value = ((float)XP) / (2*PrevXP);
+                //rageSlider.value = ((float)rageMeter) / 100;
+                //expSlider.value = ((float)XP) / (2*PrevXP);
                 if (!m_Jump)
                 {
                     m_Jump = Input.GetButtonDown("Jump");
