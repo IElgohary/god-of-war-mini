@@ -34,7 +34,7 @@ public class PlayerHealth : MonoBehaviour
         {
 
 
-            //healthSlider.value = ((float)currentHealth) / maxHealth;
+            healthSlider.value = ((float)currentHealth) / maxHealth;
             shield = Input.GetKey(KeyCode.LeftControl);
             if (shield)
             {
