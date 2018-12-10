@@ -48,41 +48,23 @@ public class MeleeAttack : MonoBehaviour {
         StartCoroutine(attack());
     }
 
-
-
-
-    public void StartSword() {
-        weaponColliders[0].enabled = true;
-    }
-
-    public void StopSword()
-    {
-        weaponColliders[0].enabled = false;
-    }
-
-    public void StartSwordandSheild() {
-        weaponColliders[1].enabled = true;
-    }
-
-    public void StopSwordandSheild()
+    public void DisableShield()
     {
         weaponColliders[1].enabled = false;
     }
 
-    public void disableAttack(string name){
-        string[] tmp = new string[attacks.Length-1];
-        int idx = 0;
-        foreach (string attackName in attacks)
-        {
-            if(!attackName.Equals(name)){
-                if(idx >= tmp.Length){
-                    break;
-                }
-                tmp[idx] = attackName;
-                idx++;
-            }
-        }
-        attacks = tmp;
+    public void EnableShield()
+    {
+        weaponColliders[1].enabled = true;
+    }
+
+    public void DisableSword()
+    {
+        weaponColliders[0].enabled = false;
+    }
+
+    public void EnableSword(){
+        weaponColliders[0].enabled = true;
     }
 
     private void rotateTowards(Transform player) {

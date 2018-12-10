@@ -15,7 +15,7 @@ public class BossHealth : MonoBehaviour
     public bool isStunned = false;
 
     private int startingHealth = 200;
-    private float timeSinceLastHit = 1f;
+    private float timeSinceLastHit = 3f;
     private float dissapearSpeed = 2f;
     private float timer = 0f;
     private Animator anim;
@@ -47,17 +47,19 @@ public class BossHealth : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other) {
-        if(timer >= timeSinceLastHit && !GameManager.instance.gameOver) {
+        if(timer >= timeSinceLastHit && !GameManager.instance.gameOver && !isStunned) {
             if(other.tag == "PlayerWeapon") {
-                takeHit();
+                takeHit(GameManager.instance.damage);
                 timer = 0f;
             }
         }
     }
 
-    void takeHit() {
-        if(currentHealth > 0) {
-            currentHealth -= 10;
+    void takeHit(int amount) {
+        if ( !gameObject.GetComponent<BossAttack>().isAttacking )
+            anim.Play("Get Hit");
+        if (currentHealth > 0) {
+            currentHealth -= amount;
         }
 
         if(currentHealth <= 0){
@@ -67,17 +69,6 @@ public class BossHealth : MonoBehaviour
     }
 
     public void weakPoint() {
-        if (currentHealth > 0)
-        {
-
-            currentHealth -= 30;
-        }
-
-        if (currentHealth <= 0)
-        {
-            isAlive = false;
-            KillBoss();
-        }
         StartCoroutine(stun());
     }
 
@@ -86,6 +77,7 @@ public class BossHealth : MonoBehaviour
         anim.Play("Die");
         anim.SetBool("isStunned", true);
         StartCoroutine(removeBoss());
+        GameManager.instance.EnemyDead();
     }
 
     IEnumerator removeBoss(){
@@ -106,7 +98,7 @@ public class BossHealth : MonoBehaviour
         }
         catch (System.Exception ex) {}
 
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(8);
         anim.SetBool("isStunned", false);
         isStunned = false;
         yield return new WaitForSeconds(0.1f);

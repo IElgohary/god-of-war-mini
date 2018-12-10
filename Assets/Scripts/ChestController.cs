@@ -5,20 +5,24 @@ using UnityEngine;
 public class ChestController : MonoBehaviour {
 
 	private Animator anim;
+    private bool isClosed = true;
 	// Use this for initialization
 	void Start () {
 	        anim = GetComponent<Animator>();
-	
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
-   private  void OnCollisionEnter(Collision collision)
+   private  void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.tag.Equals("PlayerWeapon"))
-		anim.SetBool("Near",true);
+        if(other.tag == "PlayerWeapon" && isClosed){
+            anim.SetBool("Near", true);
+            isClosed = false;
+            GameManager.instance.HealKratos();
+        }
+		    
     }
 	
-	}
+}

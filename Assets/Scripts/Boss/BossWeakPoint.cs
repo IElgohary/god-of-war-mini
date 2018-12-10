@@ -26,17 +26,24 @@ public class BossWeakPoint : MonoBehaviour {
         timer += Time.deltaTime;
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        StartCoroutine(delay());
+        GameManager.instance.hittingWeakPoint = false;
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (timer >= timeSinceLastHit && !GameManager.instance.gameOver && !bossHealth.isStunned)
         {
             if (other.tag == "PlayerWeapon")
             {
+                Debug.Log(attackName);
                 timer = 0f;
                 timesHit++;
-                anim.Play("Get Hit");
                 bossAttack.disableFlames();
                 if (timesHit == weakPtsCount){
+                    GameManager.instance.hittingWeakPoint = true;
                     bossHealth.weakPoint();
                     bossAttack.disableAttack(attackName);
                     Destroy(gameObject);
@@ -44,5 +51,9 @@ public class BossWeakPoint : MonoBehaviour {
                 }
             }
         }
+    }
+
+    IEnumerator delay(){
+        yield return new WaitForSeconds(0.2f);
     }
 }

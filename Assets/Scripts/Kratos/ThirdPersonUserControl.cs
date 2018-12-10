@@ -1,12 +1,16 @@
 using System;
+using System.Collections;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
     [RequireComponent(typeof(ThirdPersonCharacter))]
     public class ThirdPersonUserControl : MonoBehaviour
     {
+        public Slider expSlider;
+        public Slider rageSlider;
+
         private ThirdPersonCharacter m_Character; // A reference to the ThirdPersonCharacter on the object
         private Transform m_Cam;                  // A reference to the main camera in the scenes transform
         private Vector3 m_CamForward;             // The current forward direction of the camera
@@ -15,7 +19,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public LayerMask layerMask;
         Vector3 currLooktarget = Vector3.zero;
         private Animator anim;
-        private float damage = 1.0f;
+        private float damageFactor = 1.0f;
         private float moveFactor = 1.0f;
         private PlayerHealth healthScript;
         private int health;
@@ -28,7 +32,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private bool rageBool = false;
         private bool Shield = false;
         public int jumpState;
-        private bool CrouchAndHit = false;
         private BoxCollider[] weaponColliders;
         public bool lightAttack;
         public bool heavyAttack;
@@ -36,6 +39,14 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 
 
+        public int GetDamage(){
+            float damage = 0;
+            if (heavyAttack) damage = 30;
+            if (lightAttack) damage = 10;
+            damage *= damageFactor;
+            if (rageBool) damage *= 2;
+            return (int) damage;
+        }
 
         private void Start()
         {
@@ -58,20 +69,20 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             // get the third person character ( this should never be null due to require component )
             m_Character = GetComponent<ThirdPersonCharacter>();
         }
-        private void updateRage()
+        public void updateRage()
         {
             rageMeter += 10;
+
             if (rageMeter >= 100)
             {
                 rageMeter = 100;
-                rageBool = true;
 
             }
 
         }
 
 
-        private void updateXP()
+        public void updateXP()
         {
             XP = XP + 50;
             if (XP >= 2 * PrevXP)
@@ -87,8 +98,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             switch (x)
             {
                 case 1: moveFactor += 0.1f; break;
-                case 2: damage += 0.1f; break;
-                case 3: health += 10; healthScript.currentHealth = health; break;
+                case 2: damageFactor += 0.1f; break;
+                case 3: healthScript.maxHealth += 10; break;
             }
         }
 
@@ -97,6 +108,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             foreach (var weapon in weaponColliders)
             {
                 weapon.enabled = true;
+                lightAttack = true;
             }
         }
 
@@ -105,6 +117,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             foreach (var weapon in weaponColliders)
             {
                 weapon.enabled = false;
+                lightAttack = false;
             }
         }
 
@@ -123,12 +136,15 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             {
                 weapon.enabled = false;
                 heavyAttack = false;
+
             }
         }
         private void Update()
         {
             if (!GameManager.instance.gameOver)
             {
+                rageSlider.value = ((float)rageMeter) / 100;
+                expSlider.value = ((float)XP) / (2*PrevXP);
                 if (!m_Jump)
                 {
                     m_Jump = Input.GetButtonDown("Jump");
@@ -159,16 +175,28 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
                 if (Input.GetKeyDown(KeyCode.R))
                 {
-                    if (rageBool)
+                    if (rageMeter == 100)
                     {
-                        damage *= 2f;
-                        rageMeter = 0;
-                        rageBool = false;
+                        rageBool = true;
+                        StartCoroutine(reduceRage());
                     }
                 }
 
             }
         }
+
+        IEnumerator reduceRage()
+        {
+            yield return new WaitForSeconds(0.05f);
+            rageMeter -= 1;
+            if(rageMeter == 0) {
+                rageBool = false;
+            }
+
+
+        }
+        
+
         private void FixedUpdate()
         {
             //CAMERA ACCORDING TO MOUSE

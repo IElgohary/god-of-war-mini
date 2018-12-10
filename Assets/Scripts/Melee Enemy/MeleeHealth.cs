@@ -7,9 +7,9 @@ public class MeleeHealth : MonoBehaviour
 {
     [Tooltip("Colliders that take damage in the Melee Enemy.")]
     public Collider DamageTaker;
-    [Tooltip("Whether or not the boss is alive.")]
+    [Tooltip("Whether or not the enemy is alive.")]
     public bool isAlive;
-    [Tooltip("Current health of the boss.")]
+    [Tooltip("Current health of the enemy.")]
     public int currentHealth;
 
     private int startingHealth = 50;
@@ -46,34 +46,36 @@ public class MeleeHealth : MonoBehaviour
     void OnTriggerEnter(Collider other) {
         if(timer >= timeSinceLastHit && !GameManager.instance.gameOver) {
             if(other.tag == "PlayerWeapon") {
-                takeHit();
+                takeHit(GameManager.instance.damage);
                 timer = 0f;
             }
         }
     }
 
-    void takeHit() {
-        if(currentHealth > 0) {
-            currentHealth -= 10;
+    void takeHit(int amount)
+    {
+        anim.Play("Get Hit");
+        if (currentHealth > 0)
+        {
+            currentHealth -= amount;
         }
 
-        if(currentHealth <= 0){
+        if (currentHealth <= 0)
+        {
             isAlive = false;
             KillMelee();
         }
     }
 
-
-
     void KillMelee() {
         nav.enabled = false;
         anim.Play("Die");
 
-        StartCoroutine(removeBoss());
+        StartCoroutine(removeMelee());
     }
 
-    IEnumerator removeBoss(){
-        yield return new WaitForSeconds(6);
+    IEnumerator removeMelee(){
+        yield return new WaitForSeconds(3);
         dissapearEnemy = true;
         yield return new WaitForSeconds(2);
         Destroy(gameObject);
