@@ -13,6 +13,19 @@ public class GameManager : MonoBehaviour {
     public int damage = 0;
     [Tooltip("is Kratos Hitting a weak point?")]
     public bool hittingWeakPoint = false;
+    [Tooltip("Array of SpawnPoints")]
+    public GameObject[] spawnPoints;
+    [Tooltip("Ranger enemy.")]
+    public GameObject ranger;
+    [Tooltip("Orc enemy")]
+    public GameObject orc;
+
+    public float generatedSpawnTime = 1;
+    public float currentSpawnTime = 0;
+
+    private GameObject newEnemy;
+    private List<MeleeHealth> meleeEnemies = new List<MeleeHealth>();
+
 
     void Awake(){
 

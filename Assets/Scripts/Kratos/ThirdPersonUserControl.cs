@@ -36,9 +36,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public bool lightAttack;
         public bool heavyAttack;
 
-
-
-
         public int GetDamage(){
             float damage = 0;
             if (heavyAttack) damage = 30;
