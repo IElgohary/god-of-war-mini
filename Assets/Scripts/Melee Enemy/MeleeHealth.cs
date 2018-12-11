@@ -66,18 +66,18 @@ public class MeleeHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             isAlive = false;
-            KillMelee();
+            KillEnemy();
         }
     }
 
-    void KillMelee() {
+    void KillEnemy() {
         nav.enabled = false;
         anim.Play("Die");
 
-        StartCoroutine(removeMelee());
+        StartCoroutine(removeEnemy());
     }
 
-    IEnumerator removeMelee(){
+    IEnumerator removeEnemy(){
         yield return new WaitForSeconds(3);
         dissapearEnemy = true;
         yield return new WaitForSeconds(2);

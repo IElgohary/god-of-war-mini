@@ -13,6 +13,8 @@ TagManager:
   - Kratos Blade
   - Chest
   - WeakPts
+  - kratosSpawn
+  - Camera
   layers:
   - Default
   - TransparentFX
