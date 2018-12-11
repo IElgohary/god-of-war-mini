@@ -14,6 +14,7 @@ public class CameraFollow : MonoBehaviour
     {
 
         Assert.IsNotNull(target);
+        DontDestroyOnLoad(gameObject);
     }
 
     // Use this for initialization

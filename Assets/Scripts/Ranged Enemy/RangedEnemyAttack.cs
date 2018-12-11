@@ -24,7 +24,7 @@ public class RangedEnemyAttack : MonoBehaviour
     	rot = Quaternion.Euler(gameObject.transform.rotation.x+90,gameObject.transform.rotation.y, gameObject.transform.rotation.z);
     	
     	// arrow = GameObject.instance.Arrow;
-        player = GameManager.instance.player;
+        player = GameManager.instance.GetPlayer();
         anim = GetComponent<Animator>();
         StartCoroutine(attack());
         enemyHealth = GetComponent<BossHealth>();

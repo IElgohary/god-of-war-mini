@@ -19,7 +19,7 @@ public class MeleeAttack : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        player = GameManager.instance.player;
+        player = GameManager.instance.GetPlayer();
         anim = GetComponent<Animator>();
         StartCoroutine(attack());
         MeleeHealth = GetComponent<MeleeHealth>();

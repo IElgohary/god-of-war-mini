@@ -17,13 +17,19 @@ public class PlayerHealth : MonoBehaviour
     private Rigidbody rig;
     public bool shield;
     public int maxHealth = 100;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     // Use this for initialization
     void Start()
     {
         collider = gameObject.GetComponent<CapsuleCollider>();
         audio = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
-        currentHealth = 100;
+        //currentHealth = 100;
         rig = gameObject.GetComponent<Rigidbody>();
     }
 
@@ -32,8 +38,6 @@ public class PlayerHealth : MonoBehaviour
     {
         if (!GameManager.instance.gameOver)
         {
-
-
             healthSlider.value = ((float)currentHealth) / maxHealth;
             shield = Input.GetKey(KeyCode.LeftControl);
             if (shield)

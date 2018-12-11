@@ -11,8 +11,13 @@ public class GameUI : MonoBehaviour {
 
     bool game_Paused;
 
-	// Use this for initialization
-	void Start () {
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
+    // Use this for initialization
+    void Start () {
         game_Paused = false;
         Resume();
 	}

@@ -4,23 +4,23 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class BossMove : MonoBehaviour {
-    [Tooltip("Instance of the player.")]
-    public Transform player;
+
     [Tooltip("Distance between enemy and player.")]
     public float offset;
     [Tooltip("Should the boss move?.")]
     public bool canMove;
 
-
     private NavMeshAgent nav;
     private Animator anim;
     private BossHealth bossHealth;
+    private Transform player;
 
 	// Use this for initialization
 	void Start () {
         anim = GetComponent<Animator>();
         nav = GetComponent<NavMeshAgent>();
         bossHealth = GetComponent<BossHealth>();
+        player = GameManager.instance.GetPlayer().transform;
 	}
 	
 	// Update is called once per frame

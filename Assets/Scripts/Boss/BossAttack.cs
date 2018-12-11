@@ -25,7 +25,7 @@ public class BossAttack : MonoBehaviour {
     void Start () {
         flames = GameObject.FindGameObjectWithTag("Flames");
         flames.SetActive(false);
-        player = GameManager.instance.player;
+        player = GameObject.FindGameObjectWithTag("Player");
         anim = GetComponent<Animator>();
         StartCoroutine(attack());
         bossHealth = GetComponent<BossHealth>();

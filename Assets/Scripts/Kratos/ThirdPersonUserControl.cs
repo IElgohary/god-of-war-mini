@@ -23,7 +23,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private float moveFactor = 1.0f;
         private PlayerHealth healthScript;
         public int health;
-        public  int XP = 0;
+        public int XP = 0;
         public int newXP;
         public int PrevXP = 250;
         public int level = 1;
