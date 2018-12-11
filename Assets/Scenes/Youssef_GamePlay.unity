@@ -634,6 +634,17 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 82079150942246136, guid: ac1726b2888c33a4fb57da152d819290,
+        type: 2}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 243041041048885586, guid: 01afa2a401aa8194da813de709f8f246,
+        type: 2}
+    - target: {fileID: 82079150942246136, guid: ac1726b2888c33a4fb57da152d819290,
+        type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac1726b2888c33a4fb57da152d819290, type: 2}
   m_IsPrefabAsset: 0

@@ -21,7 +21,12 @@ public class AudioSettings : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		mixer.SetFloat("musicVol", music.value);
+        PlayerPrefs.SetFloat("musicVol", music.value);
+
         mixer.SetFloat("speechVol", speech.value);
+        PlayerPrefs.SetFloat("speechVol", speech.value);
+
         mixer.SetFloat("fxVol", fx.value);
+        PlayerPrefs.SetFloat("fxVol", fx.value);
     }
 }
