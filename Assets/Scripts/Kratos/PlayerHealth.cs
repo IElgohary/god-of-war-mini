@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public Slider healthSlider;
 
-    public int startingHealth = 100;
+    
     public float timeSinceLastHit = 2f;
     private float timer = 0f;
     private Animator anim;
@@ -23,7 +23,7 @@ public class PlayerHealth : MonoBehaviour
         collider = gameObject.GetComponent<CapsuleCollider>();
         audio = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
-        currentHealth = startingHealth;
+        currentHealth = 100;
         rig = gameObject.GetComponent<Rigidbody>();
     }
 
@@ -103,7 +103,6 @@ public class PlayerHealth : MonoBehaviour
     {
         anim.SetTrigger("herodie");
         rig.isKinematic = false;
-        //
-     //  characterController.enabled = false;
+
     }
 }

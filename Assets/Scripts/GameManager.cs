@@ -25,7 +25,15 @@ public class GameManager : MonoBehaviour {
 
     private GameObject newEnemy;
     private List<MeleeHealth> meleeEnemies = new List<MeleeHealth>();
-
+    private int health;
+    private int xp;
+    private int Xp;
+    private int skillPoints;
+    private int prevXp;
+    private int newXp;
+    private int level;
+    private int maxhealth;
+    private int currhealth;
 
     void Awake(){
 
@@ -68,5 +76,28 @@ public class GameManager : MonoBehaviour {
         } else {
             gameOver = false;
         }
+    }
+    public void getState()
+    {
+        
+        maxhealth = player.GetComponent<PlayerHealth>().maxHealth;
+        currhealth = player.GetComponent<PlayerHealth>().currentHealth;
+        level =player.GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl>().level;
+        newXp=player.GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl>().newXP;
+        prevXp=player.GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl>().PrevXP;
+        skillPoints=player.GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl>().skillPoints;
+        Xp=player.GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl>().XP;
+       
+    }
+    public void setState()
+    {
+        player.GetComponent<PlayerHealth>().maxHealth = maxhealth;
+        player.GetComponent<PlayerHealth>().currentHealth = currhealth;
+        player.GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl>().level = level;
+        player.GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl>().newXP = newXp ;
+        player.GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl>().PrevXP = prevXp;
+        player.GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl>().skillPoints = skillPoints;
+        player.GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl>().XP = Xp;
+
     }
 }
