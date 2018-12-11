@@ -15,11 +15,15 @@ public class RangedEnemyAttack : MonoBehaviour
     private string[] attacks = { "Ranged Attack"};
     private BossHealth enemyHealth;
     public GameObject arrow ;
-
+    Vector3 pos ;
+    Quaternion rot ;
     // Use this for initialization
     void Start()
     {
-        // arrow = GameObject.instance.Arrow;
+    	pos = new Vector3(fireLocation.position.x,fireLocation.position.y+0.8f,fireLocation.position.z);
+    	rot = Quaternion.Euler(gameObject.transform.rotation.x+90,gameObject.transform.rotation.y, gameObject.transform.rotation.z);
+    	
+    	// arrow = GameObject.instance.Arrow;
         player = GameManager.instance.player;
         anim = GetComponent<Animator>();
         StartCoroutine(attack());
@@ -29,6 +33,9 @@ public class RangedEnemyAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    	pos = new Vector3(fireLocation.position.x,fireLocation.position.y+0.8f,fireLocation.position.z);
+    	rot = Quaternion.Euler(gameObject.transform.rotation.x+90,gameObject.transform.rotation.y, gameObject.transform.rotation.z);
+        
         if (Vector3.Distance(transform.position, player.transform.position) < range)
         {
             playerInRange = true;
@@ -40,6 +47,8 @@ public class RangedEnemyAttack : MonoBehaviour
             playerInRange = false;
             anim.SetBool("playerInRange",false);
         }
+
+
 
     }
 
@@ -86,8 +95,9 @@ public class RangedEnemyAttack : MonoBehaviour
     public void FireArrow ()
     {
         GameObject newArrow = Instantiate (arrow ) as GameObject ;
-        newArrow.transform.position = fireLocation.position;
-        newArrow.transform.rotation = transform.rotation;
-        newArrow.GetComponent<Rigidbody>().velocity = transform.forward * 25f ;
+        newArrow.transform.position =  pos;
+        newArrow.transform.rotation = rot;
+        // new Vector3(gameObject.transform.rotation.x+90,gameObject.transform.rotation.y,gameObject.transform.rotation.z);
+        newArrow.GetComponent<Rigidbody>().velocity = transform.forward * 25;
     }
 }
