@@ -519,6 +519,59 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1978942218082314, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224790724453211540, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224964339424259134, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224215518598123116, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051108385724900, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224215518598123116, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224790724453211540, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224964339424259134, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114969429227454958, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1,
+        type: 2}
+      propertyPath: m_MinValue
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114317888120880418, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1,
+        type: 2}
+      propertyPath: m_MinValue
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114678665600488028, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1,
+        type: 2}
+      propertyPath: m_MinValue
+      value: -20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1, type: 2}
   m_IsPrefabAsset: 0
