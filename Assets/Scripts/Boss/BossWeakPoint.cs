@@ -38,7 +38,6 @@ public class BossWeakPoint : MonoBehaviour {
         {
             if (other.tag == "PlayerWeapon")
             {
-                Debug.Log(attackName);
                 timer = 0f;
                 timesHit++;
                 bossAttack.disableFlames();
