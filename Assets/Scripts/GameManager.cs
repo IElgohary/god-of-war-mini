@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour {
     IEnumerator spawn () {
         if (currentSpawnTime > generatedSpawnTime) {
             currentSpawnTime = 0 ;
-            if (meleeEnemies.Count < currentLevel && rangedEnemies.Count < currentLevel ) {
+            if (meleeEnemies.Count < 2 || rangedEnemies.Count < 2 ) {
                 int randomNumber = Random.Range(0, spawnPoints.Length - 1) ;
                 GameObject spawnLocation = spawnPoints[randomNumber];
                 int randomEnemy = Random.Range(0,2);
