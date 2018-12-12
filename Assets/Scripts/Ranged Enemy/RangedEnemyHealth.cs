@@ -21,6 +21,7 @@ public class RangedEnemyHealth : MonoBehaviour
     private Rigidbody rigidBody;
     private bool dissapearEnemy = false;
 
+    public GameObject fallingDmg;
 
     // Use this for initialization
     void Start()
@@ -58,8 +59,12 @@ public class RangedEnemyHealth : MonoBehaviour
 
     void takeHit()
     {
+        GameObject instance = Instantiate(fallingDmg, transform);
+        instance.GetComponent<FallingDmg>().SetText("10");
+
         if (currentHealth > 0)
-        {
+        {   
+
             currentHealth -= 10;
         }
 
