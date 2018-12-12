@@ -15,6 +15,8 @@ public class MeleeMove : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+        player = GameManager.instance.GetPlayer().transform;
         anim = GetComponent<Animator>();
         nav = GetComponent<NavMeshAgent>();
         MeleeHealth = GetComponent<MeleeHealth>();

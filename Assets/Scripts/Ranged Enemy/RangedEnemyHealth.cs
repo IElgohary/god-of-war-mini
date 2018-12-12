@@ -5,11 +5,11 @@ using UnityEngine.AI;
 
 public class RangedEnemyHealth : MonoBehaviour
 {
-    [Tooltip("Colliders that take damage in the boss.")]
+    [Tooltip("Colliders that take damage in the archer.")]
     public Collider[] DamageTaker;
-    [Tooltip("Whether or not the boss is alive.")]
+    [Tooltip("Whether or not the archer is alive.")]
     public bool isAlive;
-    [Tooltip("Current health of the boss.")]
+    [Tooltip("Current health of the archer.")]
     public int currentHealth;
 
     private int startingHealth = 50;
@@ -25,6 +25,7 @@ public class RangedEnemyHealth : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        GameManager.instance.RegisterRangedEnemy (this) ;
         rigidBody = GetComponent<Rigidbody>();
         nav = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
@@ -66,7 +67,7 @@ public class RangedEnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             isAlive = false;
-            KillBoss();
+            KillEnemy();
         }
     }
 
@@ -86,15 +87,16 @@ public class RangedEnemyHealth : MonoBehaviour
     //    stunt();
     //}
 
-    void KillBoss()
+    void KillEnemy()
     {
+        GameManager.instance.KilledRangedEnemy(this) ;
         nav.enabled = false;
-        //anim.Play("Die");
+        anim.Play("Die");
 
-        StartCoroutine(removeBoss());
+        StartCoroutine(removeEnemy());
     }
 
-    IEnumerator removeBoss()
+    IEnumerator removeEnemy()
     {
         yield return new WaitForSeconds(6);
         dissapearEnemy = true;

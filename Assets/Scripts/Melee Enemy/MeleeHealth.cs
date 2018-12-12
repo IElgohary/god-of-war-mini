@@ -25,6 +25,7 @@ public class MeleeHealth : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        GameManager.instance.RegisterMeleeEnemy (this) ;
         rigidBody = GetComponent<Rigidbody>();
         nav = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
@@ -68,6 +69,7 @@ public class MeleeHealth : MonoBehaviour
     }
 
     void KillEnemy() {
+        GameManager.instance.KilledMeleeEnemy(this) ;
         nav.enabled = false;
         anim.Play("Die");
 

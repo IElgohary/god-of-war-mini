@@ -17,6 +17,7 @@ public class RangedEnemyMove : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        player = GameManager.instance.GetPlayer().transform;
         anim = GetComponent<Animator>();
         nav = GetComponent<NavMeshAgent>();
         enemyHealth = GetComponent<RangedEnemyHealth>();
