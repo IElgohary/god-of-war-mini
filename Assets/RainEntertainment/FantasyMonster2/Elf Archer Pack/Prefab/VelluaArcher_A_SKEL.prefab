@@ -522,10 +522,10 @@ GameObject:
   - component: {fileID: 114803612694061872}
   - component: {fileID: 114296536793563970}
   - component: {fileID: 195967391143808710}
-  - component: {fileID: 114256878254083168}
+  - component: {fileID: 114130683712911382}
   m_Layer: 0
   m_Name: VelluaArcher_A_SKEL
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -553,7 +553,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4000012710745750}
-  - component: {fileID: 65786400287638992}
   m_Layer: 0
   m_Name: Bip001-L-Hand
   m_TagString: Untagged
@@ -851,8 +850,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014108885546}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.35, y: 0.01, z: -6.83}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -4.81, y: 3.44, z: -75.16}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4000010444250232}
   - {fileID: 4861038532502058}
@@ -1212,18 +1211,6 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 47dd1d3c65facff41a93250c3cb3b5bf, type: 3}
---- !u!65 &65786400287638992
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000014135349098}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.3, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95000013323199706
 Animator:
   serializedVersion: 3
@@ -1260,7 +1247,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114256878254083168
+--- !u!114 &114130683712911382
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1268,11 +1255,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000014108885546}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80869dae4a95441fe82017cd6ed80873, type: 3}
+  m_Script: {fileID: 11500000, guid: e44364c006fa743d6b87c5b90b68c879, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: 0
-  canMove: 0
+  player: {fileID: 0}
+  offset: 10
 --- !u!114 &114296536793563970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1299,10 +1286,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cc69217ddcdd4140807ca55b581745a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 5.2
+  range: 10
   timeBetweenAttacks: 2
-  fireLocation: {fileID: 4000011651154942}
-  arrow: {fileID: 1285307187697594, guid: 2dda8882f9cb14706bd73e6dda09e495, type: 2}
+  fireLocation: {fileID: 4000010739762908}
 --- !u!136 &136885459023149714
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1312,10 +1298,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.27210388
+  m_Height: 1.415391
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0.01133283, y: 0.68729895, z: 0}
 --- !u!137 &137779837717909478
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1405,7 +1391,7 @@ CharacterController:
   m_GameObject: {fileID: 1000014108885546}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.5
@@ -1422,16 +1408,16 @@ NavMeshAgent:
   m_GameObject: {fileID: 1000014108885546}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
+  m_Radius: 0.44
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 10
+  m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 1.2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4

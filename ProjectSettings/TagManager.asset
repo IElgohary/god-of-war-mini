@@ -15,6 +15,7 @@ TagManager:
   - WeakPts
   - kratosSpawn
   - Camera
+  - enemy
   layers:
   - Default
   - TransparentFX

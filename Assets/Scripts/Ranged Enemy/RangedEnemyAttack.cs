@@ -12,40 +12,41 @@ public class RangedEnemyAttack : MonoBehaviour
     private Animator anim;
     private GameObject player;
     private bool playerInRange;
-    private string[] attacks = { "Ranged Attack"};
-    private BossHealth enemyHealth;
-    public GameObject arrow ;
+    private string[] attacks = { "Attack"};
+    private RangedEnemyHealth enemyHealth;
+    private GameObject arrow ;
     Vector3 pos ;
     Quaternion rot ;
+
     // Use this for initialization
     void Start()
     {
     	pos = new Vector3(fireLocation.position.x,fireLocation.position.y+0.8f,fireLocation.position.z);
     	rot = Quaternion.Euler(gameObject.transform.rotation.x+90,gameObject.transform.rotation.y, gameObject.transform.rotation.z);
     	
-    	// arrow = GameObject.instance.Arrow;
+    	 arrow = GameManager.instance.arrow;
         player = GameManager.instance.GetPlayer();
         anim = GetComponent<Animator>();
         StartCoroutine(attack());
-        enemyHealth = GetComponent<BossHealth>();
+        enemyHealth = GetComponent<RangedEnemyHealth>();
     }
 
     // Update is called once per frame
     void Update()
     {
-    	pos = new Vector3(fireLocation.position.x,fireLocation.position.y+0.8f,fireLocation.position.z);
-    	rot = Quaternion.Euler(gameObject.transform.rotation.x+90,gameObject.transform.rotation.y, gameObject.transform.rotation.z);
+    	//pos = new Vector3(fireLocation.position.x,fireLocation.position.y+0.8f,fireLocation.position.z);
+    	//rot = Quaternion.Euler(gameObject.transform.rotation.x+90,gameObject.transform.rotation.y, gameObject.transform.rotation.z);
         
         if (Vector3.Distance(transform.position, player.transform.position) < range)
         {
             playerInRange = true;
-            anim.SetBool("playerInRange",true);
+            anim.SetBool("PlayerInRange",true);
             rotateTowards(player.transform);
         }
         else
         {
             playerInRange = false;
-            anim.SetBool("playerInRange",false);
+            anim.SetBool("PlayerInRange",false);
         }
 
 
@@ -67,37 +68,18 @@ public class RangedEnemyAttack : MonoBehaviour
     }
 
 
-    // public void disableAttack(string name)
-    // {
-    //     string[] tmp = new string[attacks.Length - 1];
-    //     int idx = 0;
-    //     foreach (string attackName in attacks)
-    //     {
-    //         if (!attackName.Equals(name))
-    //         {
-    //             if (idx >= tmp.Length)
-    //             {
-    //                 break;
-    //             }
-    //             tmp[idx] = attackName;
-    //             idx++;
-    //         }
-    //     }
-    //     attacks = tmp;
-    // }
-
     private void rotateTowards(Transform player)
     {
         Vector3 direction = (player.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 1f);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
     public void FireArrow ()
     {
         GameObject newArrow = Instantiate (arrow ) as GameObject ;
-        newArrow.transform.position =  pos;
-        newArrow.transform.rotation = rot;
+        newArrow.transform.position =  fireLocation.position;
+        newArrow.transform.rotation = transform.rotation;
         // new Vector3(gameObject.transform.rotation.x+90,gameObject.transform.rotation.y,gameObject.transform.rotation.z);
-        newArrow.GetComponent<Rigidbody>().velocity = transform.forward * 25;
+        newArrow.GetComponent<Rigidbody>().velocity = transform.forward * 25f;
     }
 }

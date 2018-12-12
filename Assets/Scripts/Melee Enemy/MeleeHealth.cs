@@ -56,8 +56,11 @@ public class MeleeHealth : MonoBehaviour
 
     void takeHit(int amount)
     {
-        GameObject instance = Instantiate(fallingDmg, transform);
-        instance.GetComponent<FallingDmg>().SetText(amount.ToString());
+        if(fallingDmg != null){
+            GameObject instance = Instantiate(fallingDmg, transform);
+            instance.GetComponent<FallingDmg>().SetText(amount.ToString());
+        }
+
         anim.Play("Get Hit");
         if (currentHealth > 0)
         {

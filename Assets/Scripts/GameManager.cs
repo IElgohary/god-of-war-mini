@@ -18,39 +18,21 @@ public class GameManager : MonoBehaviour {
     public GameObject ranger;
     [Tooltip("Orc enemy")]
     public GameObject orc;
-    
+    [Tooltip("Arrow")]
+    public GameObject arrow;
+
     public int currentLevel;
     public float generatedSpawnTime = 1;
     public float currentSpawnTime = 0;
     public bool goToLevel2 = false;
+    public GameObject player;
+
     private GameObject newEnemy;
 
     private List<RangedEnemyHealth> killedRangedEnemies = new List<RangedEnemyHealth>();
     private List<RangedEnemyHealth> rangedEnemies = new List<RangedEnemyHealth>();
     private List<MeleeHealth> killedMeleeEnemies = new List<MeleeHealth>();
     private List<MeleeHealth> meleeEnemies = new List<MeleeHealth>();
-    public GameObject player;
-
-
-    public GameObject GetPlayer(){
-        return player;
-    }
-
-    public void RegisterMeleeEnemy (MeleeHealth enemy) {
-        meleeEnemies.Add (enemy) ;
-    }
-
-    public void RegisterRangedEnemy (RangedEnemyHealth enemy) {
-        rangedEnemies.Add (enemy) ;
-    }
-
-    public void KilledMeleeEnemy (MeleeHealth enemy) {
-        killedMeleeEnemies.Add (enemy) ;
-    }
-
-    public void KilledRangedEnemy (RangedEnemyHealth enemy) {
-        killedRangedEnemies.Add (enemy) ;
-    }
 
 
     void Awake(){
@@ -109,6 +91,31 @@ public class GameManager : MonoBehaviour {
         } else {
             gameOver = false;
         }
+    }
+
+    public GameObject GetPlayer()
+    {
+        return player;
+    }
+
+    public void RegisterMeleeEnemy(MeleeHealth enemy)
+    {
+        meleeEnemies.Add(enemy);
+    }
+
+    public void RegisterRangedEnemy(RangedEnemyHealth enemy)
+    {
+        rangedEnemies.Add(enemy);
+    }
+
+    public void KilledMeleeEnemy(MeleeHealth enemy)
+    {
+        killedMeleeEnemies.Add(enemy);
+    }
+
+    public void KilledRangedEnemy(RangedEnemyHealth enemy)
+    {
+        killedRangedEnemies.Add(enemy);
     }
     IEnumerator spawn () {
         if (currentSpawnTime > generatedSpawnTime) {

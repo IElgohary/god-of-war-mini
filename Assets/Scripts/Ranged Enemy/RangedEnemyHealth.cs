@@ -13,7 +13,7 @@ public class RangedEnemyHealth : MonoBehaviour
     public int currentHealth;
 
     private int startingHealth = 50;
-    private float timeSinceLastHit = 1f;
+    private float timeSinceLastHit = 2f;
     private float dissapearSpeed = 2f;
     private float timer = 0f;
     private Animator anim;
@@ -60,8 +60,11 @@ public class RangedEnemyHealth : MonoBehaviour
 
     void takeHit()
     {
-        GameObject instance = Instantiate(fallingDmg, transform);
-        instance.GetComponent<FallingDmg>().SetText("10");
+        if(fallingDmg != null) {
+            GameObject instance = Instantiate(fallingDmg, transform);
+            instance.GetComponent<FallingDmg>().SetText("10");
+        }
+        anim.Play("Get Hit");
 
         if (currentHealth > 0)
         {   

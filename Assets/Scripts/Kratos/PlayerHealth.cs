@@ -65,7 +65,8 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if(collision.gameObject.tag == "Boss"){
+        if(collision.gameObject.tag == "Boss" || collision.gameObject.tag == "enemy")
+        {
             rig.isKinematic = true;
             rig.velocity = Vector3.zero;
             rig.isKinematic = false;

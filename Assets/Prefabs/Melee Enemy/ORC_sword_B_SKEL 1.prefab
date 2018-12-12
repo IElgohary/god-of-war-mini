@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 65079612796659956}
   m_Layer: 0
   m_Name: Bip001-Prop1
-  m_TagString: Untagged
+  m_TagString: DamageDoer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -368,7 +368,7 @@ GameObject:
   - component: {fileID: 65540374924983932}
   m_Layer: 0
   m_Name: Bip001-Prop2
-  m_TagString: Untagged
+  m_TagString: DamageDoer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -586,7 +586,7 @@ GameObject:
   - component: {fileID: 195147413492320020}
   m_Layer: 0
   m_Name: ORC_sword_B_SKEL 1
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1239,8 +1239,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1777422379724852}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.39791, y: 6.6636147, z: 17.093838}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.6528568, y: 3.38, z: -75.72482}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4248240376151954}
   - {fileID: 4419864101625040}
@@ -1546,6 +1546,7 @@ MonoBehaviour:
   DamageTaker: {fileID: 136105263864757132}
   isAlive: 0
   currentHealth: 20
+  fallingDmg: {fileID: 0}
 --- !u!114 &114952765472411740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1557,7 +1558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77d0949e1cd2b3a4ebed0036fbd1a7df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 1.2
+  range: 2
   timeBetweenAttacks: 2
   weaponColliders:
   - {fileID: 65079612796659956}
@@ -1574,7 +1575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  offset: 1.2
+  offset: 2
 --- !u!136 &136105263864757132
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1584,10 +1585,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.6986384
+  m_Radius: 0.31269693
+  m_Height: 1.5914965
   m_Direction: 1
-  m_Center: {x: 0, y: 0.678602, z: 0}
+  m_Center: {x: -0.011302948, y: 0.73217297, z: 0}
 --- !u!137 &137252108541183694
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

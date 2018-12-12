@@ -32,12 +32,12 @@ public class RangedEnemyMove : MonoBehaviour
             nav.SetDestination(player.position);
             if (distance > offset)
             {
-                anim.SetBool("IsWalking", true);
+                anim.SetBool("isWalking", true);
                 nav.enabled = true;
             }
             else
             {
-                anim.SetBool("IsWalking", false);
+                anim.SetBool("isWalking", false);
                 nav.enabled = false;
             }
         }
