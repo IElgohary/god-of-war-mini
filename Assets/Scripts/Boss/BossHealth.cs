@@ -15,7 +15,7 @@ public class BossHealth : MonoBehaviour
     public bool isStunned = false;
 
     private int startingHealth = 200;
-    private float timeSinceLastHit = 3f;
+    private float timeSinceLastHit = 1f;
     private float dissapearSpeed = 2f;
     private float timer = 0f;
     private Animator anim;
@@ -74,7 +74,20 @@ public class BossHealth : MonoBehaviour
     }
 
     public void weakPoint() {
+        GameObject instance = Instantiate(fallingDmg, transform);
+        instance.GetComponent<FallingDmg>().SetText("40");
         StartCoroutine(stun());
+        if (currentHealth > 0)
+        {
+
+            currentHealth -= 40;
+        }
+
+        if (currentHealth <= 0)
+        {
+            isAlive = false;
+            KillBoss();
+        }
     }
 
     void KillBoss() {
