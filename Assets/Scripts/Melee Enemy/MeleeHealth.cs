@@ -21,6 +21,7 @@ public class MeleeHealth : MonoBehaviour
     private Rigidbody rigidBody;
     private bool dissapearEnemy = false;
 
+    public GameObject fallingDmg;
 
     // Use this for initialization
     void Start()
@@ -55,6 +56,8 @@ public class MeleeHealth : MonoBehaviour
 
     void takeHit(int amount)
     {
+        GameObject instance = Instantiate(fallingDmg, transform);
+        instance.GetComponent<FallingDmg>().SetText(amount.ToString());
         anim.Play("Get Hit");
         if (currentHealth > 0)
         {
