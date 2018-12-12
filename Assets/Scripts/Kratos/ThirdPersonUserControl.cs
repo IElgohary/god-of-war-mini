@@ -60,7 +60,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             health = healthScript.currentHealth;
             weaponColliders = GetComponentsInChildren<BoxCollider>();
             anim = GetComponent<Animator>();
-            upgradeUI.enabled = false;
+            if(upgradeUI != null){
+                upgradeUI.enabled = false;
+            }
+
 
             // get the transform of the main camera
             if (Camera.main != null)
