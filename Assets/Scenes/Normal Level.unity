@@ -837,6 +837,16 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 224118995879785830, guid: ac1726b2888c33a4fb57da152d819290,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224118995879785830, guid: ac1726b2888c33a4fb57da152d819290,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac1726b2888c33a4fb57da152d819290, type: 2}
   m_IsPrefabAsset: 0
@@ -1124,7 +1134,7 @@ MonoBehaviour:
   - {fileID: 1812915610}
   - {fileID: 1455219005}
   - {fileID: 1649422961}
-  ranger: {fileID: 0}
+  ranger: {fileID: 1000014108885546, guid: 3613d1b81c3bd924a977cfe3316e78ad, type: 2}
   orc: {fileID: 1777422379724852, guid: 83b1496b08b42458abe4cf7d204c0dac, type: 2}
   currentLevel: 0
   generatedSpawnTime: 1
