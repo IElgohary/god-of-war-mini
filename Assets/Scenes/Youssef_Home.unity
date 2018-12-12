@@ -744,6 +744,11 @@ Prefab:
       propertyPath: fxVal
       value: 
       objectReference: {fileID: 1206750847}
+    - target: {fileID: 114594152934406496, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Normal Level
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1, type: 2}
   m_IsPrefabAsset: 0

@@ -10,6 +10,15 @@ namespace UnityStandardAssets.Characters.ThirdPerson
     {
         public Slider expSlider;
         public Slider rageSlider;
+        public TMPro.TextMeshProUGUI lvlUI;
+        public TMPro.TextMeshProUGUI spUI;
+
+        public Button upgradeUI;
+        public Button moveUpgrade;
+        public Button attackUpgrade;
+        public Button healthUpgrade;
+
+
 
         private ThirdPersonCharacter m_Character; // A reference to the ThirdPersonCharacter on the object
         private Transform m_Cam;                  // A reference to the main camera in the scenes transform
@@ -51,6 +60,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             health = healthScript.currentHealth;
             weaponColliders = GetComponentsInChildren<BoxCollider>();
             anim = GetComponent<Animator>();
+            upgradeUI.enabled = false;
+
             // get the transform of the main camera
             if (Camera.main != null)
             {
@@ -81,16 +92,36 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         public void updateXP()
         {
+            
             XP = XP + 50;
             if (XP >= 2 * PrevXP)
-            {
+            {   
+                
                 level++;
                 skillPoints++;
                 PrevXP *= 2;
+                lvlUI.text = "Lvl -> " + level;
+                spUI.text = "SP -> " + skillPoints;
+                enableUpgrades();
             }
 
         }
-        private void PickSkills(int x)
+
+        private void enableUpgrades() {
+            upgradeUI.enabled = true;
+            moveUpgrade.enabled = true;
+            healthUpgrade.enabled = true;
+            attackUpgrade.enabled = true;
+        }
+
+        private void disableUpgrades() {
+            upgradeUI.enabled = false;
+            moveUpgrade.enabled = false;
+            healthUpgrade.enabled = false;
+            attackUpgrade.enabled = false;
+        }
+
+        public void PickSkills(int x)
         {
             switch (x)
             {
@@ -98,6 +129,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 case 2: damageFactor += 0.1f; break;
                 case 3: healthScript.maxHealth += 10; break;
             }
+
+            skillPoints -= 1;
+            if (skillPoints == 0)
+                disableUpgrades();
         }
 
         private void LightAttackBegin()
