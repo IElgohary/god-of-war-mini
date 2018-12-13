@@ -61,6 +61,8 @@ public class MeleeHealth : MonoBehaviour
             instance.GetComponent<FallingDmg>().SetText(amount.ToString());
         }
 
+        GameManager.instance.EnemyHit();
+
         anim.Play("Get Hit");
         if (currentHealth > 0)
         {
@@ -78,7 +80,6 @@ public class MeleeHealth : MonoBehaviour
         GameManager.instance.KilledMeleeEnemy(this) ;
         nav.enabled = false;
         anim.Play("Die");
-
         StartCoroutine(removeEnemy());
     }
 

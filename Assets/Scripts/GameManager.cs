@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.Characters.ThirdPerson;
 
 public class GameManager : MonoBehaviour {
     [Tooltip("Game manages instance.")]
@@ -89,6 +90,10 @@ public class GameManager : MonoBehaviour {
         player.GetComponent<PlayerHealth>().Heal();
     }
 
+    public void EnemyHit() {
+        player.GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl>().updateRage();
+    }
+
     public void IsGameOver(int currentHP){
         if(currentHP <= 0) {
             gameOver = true;
@@ -104,7 +109,7 @@ public class GameManager : MonoBehaviour {
 
     public void RegisterMeleeEnemy(MeleeHealth enemy)
     {
-        meleeEnemies.Add(enemy);
+        meleeEnemies.Add(enemy); 
     }
 
     public void RegisterRangedEnemy(RangedEnemyHealth enemy)
@@ -115,11 +120,14 @@ public class GameManager : MonoBehaviour {
     public void KilledMeleeEnemy(MeleeHealth enemy)
     {
         killedMeleeEnemies.Add(enemy);
+        player.GetComponent<ThirdPersonUserControl>().updateXP();
+        Debug.Log("Melee Killed");
     }
 
     public void KilledRangedEnemy(RangedEnemyHealth enemy)
     {
         killedRangedEnemies.Add(enemy);
+        player.GetComponent<ThirdPersonUserControl>().updateXP();
     }
 
     IEnumerator spawn () {

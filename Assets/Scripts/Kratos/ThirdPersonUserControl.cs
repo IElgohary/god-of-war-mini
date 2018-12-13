@@ -12,6 +12,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public Slider rageSlider;
         public TMPro.TextMeshProUGUI lvlUI;
         public TMPro.TextMeshProUGUI spUI;
+        public TMPro.TextMeshProUGUI spMenu;
 
         public Button upgradeUI;
         public Button moveUpgrade;
@@ -60,10 +61,17 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             health = healthScript.currentHealth;
             weaponColliders = GetComponentsInChildren<BoxCollider>();
             anim = GetComponent<Animator>();
-            if(upgradeUI != null){
+            skillPoints = 5;
+            rageSlider.value = rageMeter;
+            if (upgradeUI != null){
                 upgradeUI.enabled = false;
             }
-
+            if(lvlUI != null)
+                lvlUI.text = "Lvl   " + level;
+            if(spUI != null)
+                spUI.text = "SP   " + skillPoints;
+            if(spMenu != null)
+                spMenu.text = "SP   " + skillPoints;
 
             // get the transform of the main camera
             if (Camera.main != null)
@@ -80,48 +88,48 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             // get the third person character ( this should never be null due to require component )
             m_Character = GetComponent<ThirdPersonCharacter>();
         }
+
+
         public void updateRage()
         {
             rageMeter += 10;
-
             if (rageMeter >= 100)
             {
                 rageMeter = 100;
-
             }
-
+            rageSlider.value = rageMeter;
         }
 
 
         public void updateXP()
         {
-            
             XP = XP + 50;
             if (XP >= 2 * PrevXP)
-            {   
-                
+            {     
                 level++;
                 skillPoints++;
                 PrevXP *= 2;
-                lvlUI.text = "Lvl -> " + level;
-                spUI.text = "SP -> " + skillPoints;
+                expSlider.value = (int) ((XP - PrevXP) / (PrevXP * 2));
+                lvlUI.text = "Lvl   " + level;
+                spUI.text = "SP   " + skillPoints;
+                spMenu.text = "SP   " + skillPoints;
                 enableUpgrades();
             }
-
         }
 
         private void enableUpgrades() {
-            upgradeUI.enabled = true;
-            moveUpgrade.enabled = true;
-            healthUpgrade.enabled = true;
-            attackUpgrade.enabled = true;
+            upgradeUI.gameObject.SetActive(true);
+            moveUpgrade.gameObject.SetActive(true);
+            healthUpgrade.gameObject.SetActive(true);
+            attackUpgrade.gameObject.SetActive(true);
+
         }
 
         private void disableUpgrades() {
-            upgradeUI.enabled = false;
-            moveUpgrade.enabled = false;
-            healthUpgrade.enabled = false;
-            attackUpgrade.enabled = false;
+            upgradeUI.gameObject.SetActive(false);
+            moveUpgrade.gameObject.SetActive(false);
+            healthUpgrade.gameObject.SetActive(false);
+            attackUpgrade.gameObject.SetActive(false);
         }
 
         public void PickSkills(int x)
@@ -134,6 +142,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             }
 
             skillPoints -= 1;
+            spUI.text = "SP     " + skillPoints;
+            spMenu.text = "SP     " + skillPoints;
             if (skillPoints == 0)
                 disableUpgrades();
         }

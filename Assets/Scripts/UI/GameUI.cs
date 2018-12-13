@@ -11,9 +11,19 @@ public class GameUI : MonoBehaviour {
 
     bool game_Paused;
 
+    bool UI_Exists;
+
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (!UI_Exists)
+        {
+            UI_Exists = true;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Use this for initialization
