@@ -473,6 +473,24 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac1726b2888c33a4fb57da152d819290, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &822960542 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1991090579748572, guid: fe0fe980c1a694c6ab2e9e118cdf5b08,
+    type: 2}
+  m_PrefabInternal: {fileID: 1033095950}
+--- !u!114 &822960543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 822960542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e011547738233044fac1013f96fe1e3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lookAt: {fileID: 1277089240}
+  camTransform: {fileID: 0}
 --- !u!1001 &1033095950
 Prefab:
   m_ObjectHideFlags: 0
@@ -569,6 +587,11 @@ Prefab:
     - target: {fileID: 4803314613958562, guid: fe0fe980c1a694c6ab2e9e118cdf5b08, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.010000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 114759835606725604, guid: fe0fe980c1a694c6ab2e9e118cdf5b08,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe0fe980c1a694c6ab2e9e118cdf5b08, type: 2}

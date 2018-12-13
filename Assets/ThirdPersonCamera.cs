@@ -11,7 +11,7 @@ public class ThirdPersonCamera : MonoBehaviour {
     private float distance = 7.0f;
     private float currentX = 0.0f;
     private float currentY = 30.0f;
-    private float sensitivityX = 4.0f;
+    private float sensitivityX = 3.6f;
     private float sensitivityY = 1.0f;
 
     private void Start()
@@ -31,7 +31,7 @@ public class ThirdPersonCamera : MonoBehaviour {
         Quaternion rotation = Quaternion.Euler(currentY, sensitivityX*currentX, 0);
         camTransform.position = lookAt.position + rotation * dir;
 
-        camTransform.LookAt(lookAt.position);
+        camTransform.LookAt(lookAt.position + new Vector3(0,3,0));
     }
 
 }

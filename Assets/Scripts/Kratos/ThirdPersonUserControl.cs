@@ -233,9 +233,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 {
 
                     //Debug.Log("Activated rage");
-                    GetComponents<AudioSource>()[2].Play();
+                    
                     if (rageMeter == 100)
                     {
+                        GetComponents<AudioSource>()[2].Play();
                         rageBool = true; 
                         StartCoroutine(reduceRage());
                         
