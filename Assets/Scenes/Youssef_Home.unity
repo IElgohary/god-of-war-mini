@@ -268,6 +268,17 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 82315115962188682, guid: c175fad3928554149889fc5cc6df9102,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 10942b63365e0594183485a75b9af655, type: 3}
+    - target: {fileID: 82315115962188682, guid: c175fad3928554149889fc5cc6df9102,
+        type: 2}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 243041041048885586, guid: 01afa2a401aa8194da813de709f8f246,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 114952668848915668, guid: c175fad3928554149889fc5cc6df9102, type: 2}
     - {fileID: 114137006800995550, guid: c175fad3928554149889fc5cc6df9102, type: 2}

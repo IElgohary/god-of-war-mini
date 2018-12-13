@@ -21,6 +21,7 @@ public class ChestController : MonoBehaviour {
             anim.SetBool("Near", true);
             isClosed = false;
             GameManager.instance.HealKratos();
+            other.transform.root.gameObject.GetComponents<AudioSource>()[3].Play();
         }
 		    
     }

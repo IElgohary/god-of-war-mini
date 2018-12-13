@@ -12,7 +12,7 @@ public class PlayerHealth : MonoBehaviour
     private float timer = 0f;
     private Animator anim;
     public int currentHealth;
-    private AudioSource audio;
+    private AudioSource [] audios;
     private CapsuleCollider collider;
     private Rigidbody rig;
     public bool shield;
@@ -27,7 +27,7 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         collider = gameObject.GetComponent<CapsuleCollider>();
-        audio = GetComponent<AudioSource>();
+        audios = GetComponents<AudioSource>();
         anim = GetComponent<Animator>();
         //currentHealth = 100;
         rig = gameObject.GetComponent<Rigidbody>();
@@ -95,7 +95,7 @@ public class PlayerHealth : MonoBehaviour
         {
             anim.Play("Hurt");
             currentHealth -= 10;
-            audio.PlayOneShot(audio.clip);
+            audios[0].Play();
         }
         if (currentHealth <= 0)
         {
@@ -106,6 +106,7 @@ public class PlayerHealth : MonoBehaviour
 
     void killPlayer()
     {
+        audios[1].Play();        
         anim.SetTrigger("herodie");
         rig.isKinematic = false;
 
