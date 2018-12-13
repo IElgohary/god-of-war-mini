@@ -16,6 +16,7 @@ TagManager:
   - kratosSpawn
   - Camera
   - enemy
+  - Game UI
   layers:
   - Default
   - TransparentFX
