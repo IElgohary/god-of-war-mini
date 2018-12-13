@@ -12,7 +12,7 @@ public class RangedEnemyHealth : MonoBehaviour
     [Tooltip("Current health of the archer.")]
     public int currentHealth;
 
-    private int startingHealth = 30;
+    private int startingHealth = 40;
     private float timeSinceLastHit = 2f;
     private float dissapearSpeed = 2f;
     private float timer = 0f;
