@@ -8,6 +8,10 @@ public class GameUI : MonoBehaviour {
     public GameObject HUD;
     public GameObject Pause;
     public GameObject Upgrade;
+    public GameObject GameOver;
+
+    public AudioSource gameoverMusic;
+    public AudioSource pauseMusic;
 
     bool game_Paused;
 
@@ -49,6 +53,12 @@ public class GameUI : MonoBehaviour {
         }
     }
 
+    public void To_GameOver() {
+        gameoverMusic.Play();
+        Hide_Everything();
+        GameOver.SetActive(true);
+    }
+
 
     void Hide_Everything() {
         HUD.SetActive(false);
@@ -62,6 +72,7 @@ public class GameUI : MonoBehaviour {
         HUD.SetActive(true);
         Time.timeScale = 1.0f;
         game_Paused = false;
+        pauseMusic.Stop();
     }
 
 
@@ -70,6 +81,7 @@ public class GameUI : MonoBehaviour {
         Pause.SetActive(true);
         Time.timeScale = 0.0f;
         game_Paused = true;
+        pauseMusic.Play();
     }
 
 

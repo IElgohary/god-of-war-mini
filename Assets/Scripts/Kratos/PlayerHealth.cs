@@ -18,6 +18,8 @@ public class PlayerHealth : MonoBehaviour
     public bool shield;
     public int maxHealth = 100;
 
+    
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -106,7 +108,10 @@ public class PlayerHealth : MonoBehaviour
 
     void killPlayer()
     {
-        audios[1].Play();        
+
+        audios[1].Play();
+        GameObject.FindGameObjectWithTag("Game UI").GetComponent<GameUI>().To_GameOver();
+
         anim.SetTrigger("herodie");
         rig.isKinematic = false;
 

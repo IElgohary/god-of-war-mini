@@ -202,11 +202,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                     jumpState = 0;
 
 
-                if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
-                {
-                    //calling for the pause menu
-                }
-
 
                 if (Input.GetMouseButtonDown(0))
                 {
@@ -220,6 +215,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
                 if (Input.GetKeyDown(KeyCode.R))
                 {
+
+                    Debug.Log("Activated rage");
                     if (rageMeter == 100)
                     {
                         rageBool = true;
@@ -234,7 +231,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         {
             yield return new WaitForSeconds(0.05f);
             rageMeter -= 1;
-            if(rageMeter == 0) {
+            rageSlider.value = rageMeter;
+            if (rageMeter == 0) {
                 rageBool = false;
             }
 
