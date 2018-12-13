@@ -92,12 +92,15 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         public void updateRage()
         {
-            rageMeter += 10;
-            if (rageMeter >= 100)
+            if (!rageBool)
             {
-                rageMeter = 100;
+                rageMeter += 10;
+                if (rageMeter >= 100)
+                {
+                    rageMeter = 100;
+                }
+                rageSlider.value = rageMeter;
             }
-            rageSlider.value = rageMeter;
         }
 
 
@@ -219,8 +222,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                     Debug.Log("Activated rage");
                     if (rageMeter == 100)
                     {
-                        rageBool = true;
+                        rageBool = true; 
                         StartCoroutine(reduceRage());
+                        
                     }
                 }
 
@@ -229,13 +233,16 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         IEnumerator reduceRage()
         {
-            yield return new WaitForSeconds(0.05f);
+            while (rageMeter > 0)
+            {
+                
             rageMeter -= 1;
+            Debug.Log(rageMeter);
             rageSlider.value = rageMeter;
-            if (rageMeter == 0) {
-                rageBool = false;
-            }
+            yield return new WaitForSeconds(0.05f);
 
+            }
+            rageBool = false;
 
         }
         
