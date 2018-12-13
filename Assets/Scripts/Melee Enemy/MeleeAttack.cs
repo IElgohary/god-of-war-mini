@@ -30,6 +30,7 @@ public class MeleeAttack : MonoBehaviour {
         if(Vector3.Distance(transform.position, player.transform.position) < range){
             playerInRange = true;
             rotateTowards(player.transform);
+
         } else {
             playerInRange = false;
         }

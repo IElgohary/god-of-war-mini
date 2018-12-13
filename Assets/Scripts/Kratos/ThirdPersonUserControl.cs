@@ -190,7 +190,20 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private void Update()
         {
             if (!GameManager.instance.gameOver)
-            {
+            {   
+                if ((Input.GetKeyDown(KeyCode.W)|Input.GetKeyDown(KeyCode.A)|
+                Input.GetKeyDown(KeyCode.D)|Input.GetKeyDown(KeyCode.S))){
+                GetComponents<AudioSource>()[4].Play();
+
+                }  
+                if ((Input.GetKeyUp(KeyCode.W)|Input.GetKeyUp(KeyCode.A)|
+                Input.GetKeyUp(KeyCode.D)|Input.GetKeyUp(KeyCode.S))){
+                GetComponents<AudioSource>()[4].Stop();
+
+                }   
+
+
+
                 rageSlider.value = ((float)rageMeter) / 100;
                 expSlider.value = ((float)XP) / (2*PrevXP);
                 if (!m_Jump)
