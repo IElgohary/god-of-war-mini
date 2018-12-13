@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour {
     public GameObject arrow;
 
     public int waveLimit;
+    public int waveCount;
+    public int finalWave;
     public float generatedSpawnTime = 1;
     public float currentSpawnTime = 0;
     public bool goToLevel2 = false;
@@ -50,6 +52,8 @@ public class GameManager : MonoBehaviour {
 	void Start () {
         StartCoroutine(spawn());
 		waveLimit = 4;
+        waveCount = 1;
+        finalWave = 3;
 	}
 	
 	// Update is called once per frame
@@ -131,6 +135,7 @@ public class GameManager : MonoBehaviour {
                 {
                     newEnemy = Instantiate(ranger) as GameObject;
                 }
+
                 newEnemy.transform.position = spawnLocation.transform.position;
             }
         }
@@ -140,8 +145,12 @@ public class GameManager : MonoBehaviour {
             killedMeleeEnemies.Clear () ;
             rangedEnemies.Clear () ;
             meleeEnemies.Clear () ;
+            waveCount++;
             yield return new WaitForSeconds(3f);
 
+        }
+        if(waveCount > finalWave) {
+            goToLevel2 = true;
         }
     
     yield return null ;

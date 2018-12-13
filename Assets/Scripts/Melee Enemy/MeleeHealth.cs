@@ -46,7 +46,7 @@ public class MeleeHealth : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other) {
-        if(timer >= timeSinceLastHit && !GameManager.instance.gameOver) {
+        if(timer >= timeSinceLastHit && !GameManager.instance.gameOver && isAlive) {
             if(other.tag == "PlayerWeapon") {
                 takeHit(GameManager.instance.damage);
                 timer = 0f;

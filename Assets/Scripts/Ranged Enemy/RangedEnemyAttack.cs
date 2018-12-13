@@ -37,7 +37,7 @@ public class RangedEnemyAttack : MonoBehaviour
     	//pos = new Vector3(fireLocation.position.x,fireLocation.position.y+0.8f,fireLocation.position.z);
     	//rot = Quaternion.Euler(gameObject.transform.rotation.x+90,gameObject.transform.rotation.y, gameObject.transform.rotation.z);
         
-        if (Vector3.Distance(transform.position, player.transform.position) < range)
+        if (Vector3.Distance(transform.position, player.transform.position) < range && enemyHealth.isAlive)
         {
             playerInRange = true;
             anim.SetBool("PlayerInRange",true);

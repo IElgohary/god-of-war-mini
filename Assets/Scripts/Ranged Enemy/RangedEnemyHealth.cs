@@ -48,28 +48,28 @@ public class RangedEnemyHealth : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (timer >= timeSinceLastHit && !GameManager.instance.gameOver)
+        if (timer >= timeSinceLastHit && !GameManager.instance.gameOver && isAlive)
         {
             if (other.tag == "PlayerWeapon")
             {
-                takeHit();
+                takeHit(GameManager.instance.damage);
                 timer = 0f;
             }
         }
     }
 
-    void takeHit()
+    void takeHit(int amount)
     {
         if(fallingDmg != null) {
             GameObject instance = Instantiate(fallingDmg, transform);
-            instance.GetComponent<FallingDmg>().SetText("10");
+            instance.GetComponent<FallingDmg>().SetText(amount.ToString());
         }
         anim.Play("Get Hit");
 
         if (currentHealth > 0)
         {   
 
-            currentHealth -= 10;
+            currentHealth -= amount;
         }
 
         if (currentHealth <= 0)
