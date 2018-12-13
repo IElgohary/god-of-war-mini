@@ -19,7 +19,7 @@ public class SceneNavigation : MonoBehaviour {
         Destroy(GameObject.FindGameObjectWithTag("Player"));
         Destroy(GameObject.FindGameObjectWithTag("Game UI"));
         Destroy(GameObject.FindGameObjectWithTag("MainCamera"));
-        // Destroy Game Manager
+        Destroy(GameObject.FindGameObjectWithTag("Game Manager"));
         SceneManager.LoadScene(SceneName);
     }
     

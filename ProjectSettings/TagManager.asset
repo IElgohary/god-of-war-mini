@@ -17,6 +17,7 @@ TagManager:
   - Camera
   - enemy
   - Game UI
+  - Game Manager
   layers:
   - Default
   - TransparentFX
