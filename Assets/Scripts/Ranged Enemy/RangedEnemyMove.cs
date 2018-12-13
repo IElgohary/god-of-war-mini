@@ -31,12 +31,14 @@ public class RangedEnemyMove : MonoBehaviour
             float distance = Vector3.Distance(player.position, transform.position);
             nav.SetDestination(player.position);
             if (distance > offset)
-            {
+            {               
+              //  GetComponents<AudioSource>()[2].Play();
                 anim.SetBool("isWalking", true);
                 nav.enabled = true;
             }
             else
             {
+               // GetComponents<AudioSource>()[2].Stop();
                 anim.SetBool("isWalking", false);
                 nav.enabled = false;
             }

@@ -27,13 +27,16 @@ public class MeleeMove : MonoBehaviour {
         if(!GameManager.instance.gameOver && MeleeHealth.isAlive){
             float distance = Vector3.Distance(player.position, transform.position);
             nav.SetDestination(player.position);
+            //GetComponents<AudioSource>()[2].Play();
+
             if (distance > offset)
             {
                 anim.SetBool("IsWalking", true);
                 nav.enabled = true;
             }
             else
-            {
+            {              
+               // GetComponents<AudioSource>()[2].Stop();
                 anim.SetBool("IsWalking", false);
                 nav.enabled = false;
             }
