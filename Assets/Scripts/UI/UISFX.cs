@@ -6,19 +6,10 @@ public class UISFX : MonoBehaviour {
 
     public AudioSource sfx;
 
-    // Use this for initialization
-    void Start () {
-        sfx.volume = 0.3f;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 
     public void HoverSFX(AudioClip hoverSFX)
     {
-        
         sfx.PlayOneShot(hoverSFX);
     }
 

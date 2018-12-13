@@ -16,6 +16,10 @@ public class SceneNavigation : MonoBehaviour {
 	}
 
     public void ChangeScene(string SceneName) {
+        Destroy(GameObject.FindGameObjectWithTag("Player"));
+        Destroy(GameObject.FindGameObjectWithTag("Game UI"));
+        Destroy(GameObject.FindGameObjectWithTag("MainCamera"));
+        // Destroy Game Manager
         SceneManager.LoadScene(SceneName);
     }
     
