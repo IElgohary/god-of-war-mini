@@ -219,7 +219,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 if (Input.GetKeyDown(KeyCode.R))
                 {
 
-                    Debug.Log("Activated rage");
+                    //Debug.Log("Activated rage");
+                    GetComponents<AudioSource>()[2].Play();
                     if (rageMeter == 100)
                     {
                         rageBool = true; 

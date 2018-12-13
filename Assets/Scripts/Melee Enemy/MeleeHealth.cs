@@ -20,6 +20,7 @@ public class MeleeHealth : MonoBehaviour
     private NavMeshAgent nav;
     private Rigidbody rigidBody;
     private bool dissapearEnemy = false;
+    private AudioSource [] audios;
 
     public GameObject fallingDmg;
 
@@ -32,6 +33,7 @@ public class MeleeHealth : MonoBehaviour
         anim = GetComponent<Animator>();
         currentHealth = startingHealth;
         isAlive = true;
+        audios = GetComponents<AudioSource>();
 
     }
 
@@ -64,6 +66,8 @@ public class MeleeHealth : MonoBehaviour
         GameManager.instance.EnemyHit();
 
         anim.Play("Get Hit");
+        audios[0].Play();
+
         if (currentHealth > 0)
         {
             currentHealth -= amount;
@@ -72,7 +76,9 @@ public class MeleeHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             isAlive = false;
+            audios[1].Play();
             KillEnemy();
+
         }
     }
 

@@ -20,6 +20,7 @@ public class RangedEnemyHealth : MonoBehaviour
     private NavMeshAgent nav;
     private Rigidbody rigidBody;
     private bool dissapearEnemy = false;
+    private AudioSource [] audios;
 
     public GameObject fallingDmg;
 
@@ -32,6 +33,7 @@ public class RangedEnemyHealth : MonoBehaviour
         anim = GetComponent<Animator>();
         currentHealth = startingHealth;
         isAlive = true;
+        audios = GetComponents<AudioSource>();
 
     }
 
@@ -65,6 +67,7 @@ public class RangedEnemyHealth : MonoBehaviour
             instance.GetComponent<FallingDmg>().SetText(amount.ToString());
         }
         anim.Play("Get Hit");
+        audios[0].Play();
 
         if (currentHealth > 0)
         {   
@@ -75,6 +78,7 @@ public class RangedEnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             isAlive = false;
+            audios[1].Play();
             KillEnemy();
         }
     }
