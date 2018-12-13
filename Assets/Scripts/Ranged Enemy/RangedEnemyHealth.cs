@@ -12,7 +12,7 @@ public class RangedEnemyHealth : MonoBehaviour
     [Tooltip("Current health of the archer.")]
     public int currentHealth;
 
-    private int startingHealth = 50;
+    private int startingHealth = 30;
     private float timeSinceLastHit = 2f;
     private float dissapearSpeed = 2f;
     private float timer = 0f;
@@ -79,22 +79,6 @@ public class RangedEnemyHealth : MonoBehaviour
         }
     }
 
-    //public void weakPoint()
-    //{
-    //    if (currentHealth > 0)
-    //    {
-    //        anim.Play("Get Hit");
-    //        currentHealth -= 10;
-    //    }
-
-    //    if (currentHealth <= 0)
-    //    {
-    //        isAlive = false;
-    //        KillBoss();
-    //    }
-    //    stunt();
-    //}
-
     void KillEnemy()
     {
         GameManager.instance.KilledRangedEnemy(this) ;
@@ -111,12 +95,4 @@ public class RangedEnemyHealth : MonoBehaviour
         yield return new WaitForSeconds(2);
         Destroy(gameObject);
     }
-
-    //IEnumerable stunt()
-    //{
-    //    anim.SetTrigger("isStunned");
-    //    yield return new WaitForSeconds(5);
-    //    //anim.ResetTrigger("isStunned");
-    //}
-
 }

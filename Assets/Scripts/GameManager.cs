@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour {
     [Tooltip("Arrow")]
     public GameObject arrow;
 
-    public int currentLevel;
+    public int waveLimit;
     public float generatedSpawnTime = 1;
     public float currentSpawnTime = 0;
     public bool goToLevel2 = false;
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         StartCoroutine(spawn());
-		currentLevel = 1;
+		waveLimit = 4;
 	}
 	
 	// Update is called once per frame
@@ -117,30 +117,34 @@ public class GameManager : MonoBehaviour {
     {
         killedRangedEnemies.Add(enemy);
     }
+
     IEnumerator spawn () {
-        if (currentSpawnTime > generatedSpawnTime) {
-            currentSpawnTime = 0 ;
-            if (meleeEnemies.Count < 2 || rangedEnemies.Count < 2 ) {
-                int randomNumber = Random.Range(0, spawnPoints.Length - 1) ;
-                GameObject spawnLocation = spawnPoints[randomNumber];
-                int randomEnemy = Random.Range(0,2);
-                if (randomEnemy == 0) {
-                    newEnemy = Instantiate (orc) as GameObject ;
-                } else  if (randomEnemy == 1 ){
-                    newEnemy = Instantiate (ranger) as GameObject ;
+        if (meleeEnemies.Count == 0 && rangedEnemies.Count == 0 ) {
+            for (int i = 0; i < spawnPoints.Length; i++){
+                GameObject spawnLocation = spawnPoints[i];
+                int randomEnemy = Random.Range(0, 2);
+                if (randomEnemy == 0)
+                {
+                    newEnemy = Instantiate(orc) as GameObject;
+                }
+                else if (randomEnemy == 1)
+                {
+                    newEnemy = Instantiate(ranger) as GameObject;
                 }
                 newEnemy.transform.position = spawnLocation.transform.position;
             }
-            if (killedMeleeEnemies.Count == currentLevel && killedRangedEnemies.Count == currentLevel){
-                killedRangedEnemies.Clear ();
-                killedMeleeEnemies.Clear () ;
-                rangedEnemies.Clear () ;
-                meleeEnemies.Clear () ;
-                yield return new WaitForSeconds(3f);
-                currentLevel++;
-            }
         }
-        yield return null ;
-        StartCoroutine(spawn());
+        if (killedMeleeEnemies.Count + killedRangedEnemies.Count == waveLimit )
+        {
+            killedRangedEnemies.Clear ();
+            killedMeleeEnemies.Clear () ;
+            rangedEnemies.Clear () ;
+            meleeEnemies.Clear () ;
+            yield return new WaitForSeconds(3f);
+
+        }
+    
+    yield return null ;
+    StartCoroutine(spawn());
     }
 }

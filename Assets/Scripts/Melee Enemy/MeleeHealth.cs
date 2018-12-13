@@ -12,7 +12,7 @@ public class MeleeHealth : MonoBehaviour
     [Tooltip("Current health of the enemy.")]
     public int currentHealth;
 
-    private int startingHealth = 50;
+    private int startingHealth = 30;
     private float timeSinceLastHit = 1f;
     private float dissapearSpeed = 2f;
     private float timer = 0f;
