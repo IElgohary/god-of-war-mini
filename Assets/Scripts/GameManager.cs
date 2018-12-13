@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour {
         StartCoroutine(spawn());
 		waveLimit = 4;
         waveCount = 1;
-        finalWave = 3;
+        //finalWave = 3;
 	}
 	
 	// Update is called once per frame
@@ -64,11 +64,11 @@ public class GameManager : MonoBehaviour {
         {
             SceneManager.LoadScene("Boss Level");
             player = GameObject.FindGameObjectWithTag("Player");
-            GameObject SpawnPoint = GameObject.FindGameObjectWithTag("kratosSpawn");
+            GameObject origin = GameObject.FindGameObjectWithTag("kratosSpawn");
             GameObject cameraSpawn = GameObject.FindGameObjectWithTag("Camera");
             GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
             player.GetComponent<Transform>().position =
-                      SpawnPoint.GetComponent<Transform>().position;
+                      origin.GetComponent<Transform>().position;
             mainCamera.GetComponent<Transform>().position = cameraSpawn.GetComponent<Transform>().position;
             goToLevel2 = false;
         }
@@ -151,9 +151,10 @@ public class GameManager : MonoBehaviour {
         }
         if(waveCount > finalWave) {
             goToLevel2 = true;
+        } else {
+            yield return null;
+            StartCoroutine(spawn());
         }
     
-    yield return null ;
-    StartCoroutine(spawn());
     }
 }
