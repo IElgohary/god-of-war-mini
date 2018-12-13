@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class BossHealth : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class BossHealth : MonoBehaviour
     public int currentHealth;
     [Tooltip("is boss stunend?")]
     public bool isStunned = false;
+
+    public Slider bossHP;
 
     private int startingHealth = 200;
     private float timeSinceLastHit = 1f;
@@ -32,6 +35,7 @@ public class BossHealth : MonoBehaviour
         nav = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         currentHealth = startingHealth;
+        bossHP.value = currentHealth;
         isAlive = true;
 
     }
@@ -60,11 +64,13 @@ public class BossHealth : MonoBehaviour
         {
             GameObject instance = Instantiate(fallingDmg, transform);
             instance.GetComponent<FallingDmg>().SetText(amount.ToString());
+            GameManager.instance.EnemyHit();
             anim.Play("Get Hit");
         }
         if (currentHealth > 0) {
             
             currentHealth -= amount;
+            bossHP.value = currentHealth;
         }
 
         if(currentHealth <= 0){
@@ -76,11 +82,13 @@ public class BossHealth : MonoBehaviour
     public void weakPoint() {
         GameObject instance = Instantiate(fallingDmg, transform);
         instance.GetComponent<FallingDmg>().SetText("40");
+        GameManager.instance.EnemyHit();
         StartCoroutine(stun());
         if (currentHealth > 0)
         {
 
             currentHealth -= 40;
+            bossHP.value = currentHealth;
         }
 
         if (currentHealth <= 0)

@@ -64,7 +64,6 @@ public class MeleeHealth : MonoBehaviour
         }
 
         GameManager.instance.EnemyHit();
-
         anim.Play("Get Hit");
         audios[0].Play();
 

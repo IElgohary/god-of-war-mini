@@ -13,25 +13,34 @@ public class GameUI : MonoBehaviour {
     public AudioSource gameoverMusic;
     public AudioSource pauseMusic;
 
-    bool game_Paused;
+    public AudioSource normalMusic;
+    public AudioSource bossMusic;
+
+    AudioSource currMusic;
+
+    public bool game_Paused;
 
     bool UI_Exists;
+    public bool bossLevel;
 
     private void Awake()
     {
         if (!UI_Exists)
         {
+            
             UI_Exists = true;
             DontDestroyOnLoad(gameObject);
         }
         else
         {
+            bossLevel = true;
             Destroy(gameObject);
         }
     }
 
     // Use this for initialization
     void Start () {
+        currMusic = normalMusic;
         game_Paused = false;
         Resume();
 	}
@@ -41,6 +50,11 @@ public class GameUI : MonoBehaviour {
         Check_Escape();
     }
 
+    public void switch_music() {
+        currMusic.Stop();
+        currMusic = bossMusic;
+        currMusic.Play();
+    }
 
     void Check_Escape() {
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
@@ -54,9 +68,12 @@ public class GameUI : MonoBehaviour {
     }
 
     public void To_GameOver() {
+        currMusic.Stop();
         gameoverMusic.Play();
         Hide_Everything();
         GameOver.SetActive(true);
+        game_Paused = true;
+        
     }
 
 
@@ -73,15 +90,19 @@ public class GameUI : MonoBehaviour {
         Time.timeScale = 1.0f;
         game_Paused = false;
         pauseMusic.Stop();
+        currMusic.Play();
     }
 
 
     public void To_Pause() {
+        currMusic.Stop();
+        if(!game_Paused)
+            pauseMusic.Play();
         Hide_Everything();
         Pause.SetActive(true);
         Time.timeScale = 0.0f;
         game_Paused = true;
-        pauseMusic.Play();
+        
     }
 
 

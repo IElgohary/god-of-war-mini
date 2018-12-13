@@ -18,6 +18,7 @@ TagManager:
   - enemy
   - Game UI
   - Game Manager
+  - BossHP
   layers:
   - Default
   - TransparentFX

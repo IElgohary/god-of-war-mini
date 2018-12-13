@@ -66,12 +66,12 @@ public class RangedEnemyHealth : MonoBehaviour
             GameObject instance = Instantiate(fallingDmg, transform);
             instance.GetComponent<FallingDmg>().SetText(amount.ToString());
         }
+        GameManager.instance.EnemyHit();
         anim.Play("Get Hit");
         audios[0].Play();
 
         if (currentHealth > 0)
         {   
-
             currentHealth -= amount;
         }
 

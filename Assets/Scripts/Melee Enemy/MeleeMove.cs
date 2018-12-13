@@ -13,9 +13,13 @@ public class MeleeMove : MonoBehaviour {
     private Animator anim;
     private MeleeHealth MeleeHealth;
 
+    bool footsteps;
+
 	// Use this for initialization
 	void Start () {
 
+        footsteps = true;
+        GetComponents<AudioSource>()[2].volume = 0.07f;
         player = GameManager.instance.GetPlayer().transform;
         anim = GetComponent<Animator>();
         nav = GetComponent<NavMeshAgent>();
@@ -31,12 +35,18 @@ public class MeleeMove : MonoBehaviour {
 
             if (distance > offset)
             {
+                if (footsteps)
+                {
+                    GetComponents<AudioSource>()[2].Play();
+                    footsteps = false;
+                }
                 anim.SetBool("IsWalking", true);
                 nav.enabled = true;
             }
             else
-            {              
-               // GetComponents<AudioSource>()[2].Stop();
+            {
+                footsteps = true;
+                GetComponents<AudioSource>()[2].Stop();
                 anim.SetBool("IsWalking", false);
                 nav.enabled = false;
             }

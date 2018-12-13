@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour {
         currentSpawnTime +=Time.deltaTime ;
         if(goToLevel2)
         {
+            
             SceneManager.LoadScene("Boss Level");
             player = GameObject.FindGameObjectWithTag("Player");
             GameObject origin = GameObject.FindGameObjectWithTag("kratosSpawn");
@@ -71,6 +72,8 @@ public class GameManager : MonoBehaviour {
             player.GetComponent<Transform>().position =
                       origin.GetComponent<Transform>().position;
             mainCamera.GetComponent<Transform>().position = cameraSpawn.GetComponent<Transform>().position;
+            GameObject.FindGameObjectWithTag("Game UI").GetComponent<GameUI>().switch_music();
+            GameObject.FindGameObjectWithTag("BossHP").SetActive(true);
             goToLevel2 = false;
         }
         // Check how much damage Kratos currently inflicts 
@@ -83,7 +86,6 @@ public class GameManager : MonoBehaviour {
 
     public void EnemyDead() {
         player.GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl>().updateXP();
-        player.GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl>().updateRage();
     }
 
     public void HealKratos(){
@@ -120,14 +122,15 @@ public class GameManager : MonoBehaviour {
     public void KilledMeleeEnemy(MeleeHealth enemy)
     {
         killedMeleeEnemies.Add(enemy);
-        player.GetComponent<ThirdPersonUserControl>().updateXP();
-        Debug.Log("Melee Killed");
+        //player.GetComponent<ThirdPersonUserControl>().updateXP();
+        EnemyDead();
+    
     }
 
     public void KilledRangedEnemy(RangedEnemyHealth enemy)
     {
         killedRangedEnemies.Add(enemy);
-        player.GetComponent<ThirdPersonUserControl>().updateXP();
+        EnemyDead();
     }
 
     IEnumerator spawn () {

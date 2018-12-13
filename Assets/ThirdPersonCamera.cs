@@ -11,18 +11,22 @@ public class ThirdPersonCamera : MonoBehaviour {
     private float distance = 7.0f;
     private float currentX = 0.0f;
     private float currentY = 30.0f;
-    private float sensitivityX = 3.6f;
+    private float sensitivityX = 3.3f;
     private float sensitivityY = 1.0f;
+
+    GameUI ui;
 
     private void Start()
     {
+        ui = GameObject.FindGameObjectWithTag("Game UI").GetComponent<GameUI>();
         camTransform = transform;
         cam = Camera.main;
     }
 
     private void Update()
     {
-        currentX += Input.GetAxis("Mouse X");
+        if (!ui.game_Paused)   
+            currentX += Input.GetAxis("Mouse X");
     }
 
     private void LateUpdate()

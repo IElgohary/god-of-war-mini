@@ -61,7 +61,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             health = healthScript.currentHealth;
             weaponColliders = GetComponentsInChildren<BoxCollider>();
             anim = GetComponent<Animator>();
-            skillPoints = 5;
+            skillPoints = 50;
             rageSlider.value = rageMeter;
             if (upgradeUI != null){
                 upgradeUI.enabled = false;
@@ -139,9 +139,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         {
             switch (x)
             {
-                case 1: moveFactor += 0.1f; break;
-                case 2: damageFactor += 0.1f; break;
-                case 3: healthScript.maxHealth += 10; break;
+                case 0: moveFactor += 0.1f; break;
+                case 1: damageFactor += 0.1f; break;
+                case 2: healthScript.maxHealth += 10; break;
             }
 
             skillPoints -= 1;

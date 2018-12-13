@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class MeleeAttack : MonoBehaviour {
     [Tooltip("Attack range of the Melee Enemy.")]
     public float range = 2.2f;
@@ -16,6 +17,7 @@ public class MeleeAttack : MonoBehaviour {
     private string[] attacks = { "Sword Attack", "Sword&Sheild Attack"};
     private MeleeHealth MeleeHealth;
 
+    
 
     // Use this for initialization
     void Start () {
@@ -30,6 +32,7 @@ public class MeleeAttack : MonoBehaviour {
         if(Vector3.Distance(transform.position, player.transform.position) < range){
             playerInRange = true;
             rotateTowards(player.transform);
+            
 
         } else {
             playerInRange = false;

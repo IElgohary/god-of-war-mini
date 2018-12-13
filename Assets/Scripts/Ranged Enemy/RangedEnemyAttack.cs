@@ -18,13 +18,20 @@ public class RangedEnemyAttack : MonoBehaviour
     Vector3 pos ;
     Quaternion rot ;
 
+    bool kratos_detected;
+
+    public AudioSource speech;
+
     // Use this for initialization
     void Start()
     {
-    	pos = new Vector3(fireLocation.position.x,fireLocation.position.y+0.8f,fireLocation.position.z);
+        //speech.volume = 0.5f;
+
+        kratos_detected = false;
+        pos = new Vector3(fireLocation.position.x,fireLocation.position.y+0.8f,fireLocation.position.z);
     	rot = Quaternion.Euler(gameObject.transform.rotation.x+90,gameObject.transform.rotation.y, gameObject.transform.rotation.z);
     	
-    	 arrow = GameManager.instance.arrow;
+    	arrow = GameManager.instance.arrow;
         player = GameManager.instance.GetPlayer();
         anim = GetComponent<Animator>();
         StartCoroutine(attack());
@@ -42,6 +49,11 @@ public class RangedEnemyAttack : MonoBehaviour
             playerInRange = true;
             anim.SetBool("PlayerInRange",true);
             rotateTowards(player.transform);
+            if (!kratos_detected)
+            {
+                speech.Play();
+                kratos_detected = true;
+            }
         }
         else
         {
