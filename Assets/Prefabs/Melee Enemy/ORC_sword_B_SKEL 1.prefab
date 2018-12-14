@@ -1838,6 +1838,7 @@ MonoBehaviour:
   isAlive: 0
   currentHealth: 20
   fallingDmg: {fileID: 0}
+  blood: {fileID: 1000013355911406, guid: d32aa916f50cac94db11e6f19821a58f, type: 2}
 --- !u!114 &114952765472411740
 MonoBehaviour:
   m_ObjectHideFlags: 1
