@@ -23,6 +23,7 @@ public class RangedEnemyHealth : MonoBehaviour
     private AudioSource [] audios;
 
     public GameObject fallingDmg;
+    public GameObject blood;
 
     // Use this for initialization
     void Start()
@@ -74,6 +75,7 @@ public class RangedEnemyHealth : MonoBehaviour
         GameManager.instance.EnemyHit();
         anim.Play("Get Hit");
         audios[0].Play();
+        Instantiate(blood,this.gameObject.transform.position + new Vector3(0,1,0),this.gameObject.transform.rotation);
 
         if (currentHealth > 0)
         {   

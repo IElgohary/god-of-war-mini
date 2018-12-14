@@ -23,7 +23,7 @@ public class MeleeHealth : MonoBehaviour
     private AudioSource [] audios;
 
     public GameObject fallingDmg;
-
+    public GameObject blood;
     // Use this for initialization
     void Start()
     {
@@ -73,6 +73,7 @@ public class MeleeHealth : MonoBehaviour
         GameManager.instance.EnemyHit();
         anim.Play("Get Hit");
         audios[0].Play();
+        Instantiate(blood,this.gameObject.transform.position + new Vector3(0,1.3f,0),this.gameObject.transform.rotation);
 
         if (currentHealth > 0)
         {
