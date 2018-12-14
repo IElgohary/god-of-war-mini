@@ -43,6 +43,13 @@ public class BossHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.F4))
+        {
+            currentHealth = 0;
+            KillBoss();
+            bossHP.value = currentHealth;
+        }
+
         timer += Time.deltaTime;
 
         if(dissapearEnemy) {
@@ -104,6 +111,8 @@ public class BossHealth : MonoBehaviour
         anim.SetBool("isStunned", true);
         StartCoroutine(removeBoss());
         GameManager.instance.EnemyDead();
+        GameObject.FindGameObjectWithTag("Game UI").GetComponent<GameUI>().To_Credits();
+        bossHP.gameObject.SetActive(false);
     }
 
     IEnumerator removeBoss(){

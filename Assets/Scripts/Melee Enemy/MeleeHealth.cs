@@ -40,6 +40,13 @@ public class MeleeHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.F4))
+        {
+            currentHealth = 0;
+            KillEnemy();
+
+        }
+
         timer += Time.deltaTime;
 
         if(dissapearEnemy) {
