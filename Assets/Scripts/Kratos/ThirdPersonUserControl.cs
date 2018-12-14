@@ -194,6 +194,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             if (!GameManager.instance.gameOver)
             {
 
+                if (Input.GetKeyDown(KeyCode.F6))
+                {
+                    rageMeter = 100;
+                    rageSlider.value = ((float)rageMeter) / 100;
+                }
+
                 if (Input.GetKeyDown(KeyCode.F2))
                 {
                     XP = PrevXP * 2;
@@ -250,6 +256,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                     
                     if (rageMeter == 100)
                     {
+                        anim.Play("mixamo_com");
                         GetComponents<AudioSource>()[2].Play();
                         rageBool = true; 
                         StartCoroutine(reduceRage());
