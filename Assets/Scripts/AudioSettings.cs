@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class AudioSettings : MonoBehaviour {
 
     public AudioMixer mixer;
+
     public Slider music;
     public Slider speech;
     public Slider fx;
@@ -17,9 +18,9 @@ public class AudioSettings : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        music.value = -5;
-        speech.value = -5;
-        fx.value = -5;
+        music.value = -15;
+        speech.value = -7;
+        fx.value = -10;
 	}
 	
 

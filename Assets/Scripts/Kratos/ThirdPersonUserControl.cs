@@ -61,7 +61,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             health = healthScript.currentHealth;
             weaponColliders = GetComponentsInChildren<BoxCollider>();
             anim = GetComponent<Animator>();
-            skillPoints = 50;
             rageSlider.value = rageMeter;
             if (upgradeUI != null){
                 upgradeUI.enabled = false;
