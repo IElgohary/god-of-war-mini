@@ -9,6 +9,7 @@ public class GameUI : MonoBehaviour {
     public GameObject Pause;
     public GameObject Upgrade;
     public GameObject GameOver;
+    public GameObject Credits;
 
     public AudioSource gameoverMusic;
     public AudioSource pauseMusic;
@@ -17,6 +18,7 @@ public class GameUI : MonoBehaviour {
     public AudioSource bossMusic;
 
     AudioSource currMusic;
+
 
     public bool game_Paused;
 
@@ -74,6 +76,17 @@ public class GameUI : MonoBehaviour {
         GameOver.SetActive(true);
         game_Paused = true;
         
+    }
+
+
+    public void To_Credits()
+    {
+        currMusic.Stop();
+        gameoverMusic.Play();
+        Hide_Everything();
+        Credits.SetActive(true);
+        game_Paused = true;
+
     }
 
 

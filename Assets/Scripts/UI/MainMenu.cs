@@ -40,8 +40,9 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void ToCredits() {
-        // Disable_Everything() AND:
+        Hide_All();
         Debug.Log("Load Credits Scene");
+        Credits_Object.SetActive(true);
     }
 
     public void ToMainMenu() {
