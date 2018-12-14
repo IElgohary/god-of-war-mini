@@ -137,20 +137,22 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         public void PickSkills(int x)
         {
-            switch (x)
+            if (skillPoints > 0)
             {
-                case 0: moveFactor += 0.1f; break;
-                case 1: damageFactor += 0.1f; break;
-                case 2: healthScript.maxHealth += 10; break;
+                switch (x)
+                {
+                    case 0: moveFactor += 0.1f; break;
+                    case 1: damageFactor += 0.1f; break;
+                    case 2: healthScript.maxHealth += 10; break;
+                }
+
+                skillPoints -= 1;
+                spUI.text = "SP     " + skillPoints;
+                spMenu.text = "SP     " + skillPoints;
+                if (skillPoints == 0)
+                    disableUpgrades();
             }
-
-            skillPoints -= 1;
-            spUI.text = "SP     " + skillPoints;
-            spMenu.text = "SP     " + skillPoints;
-            if (skillPoints == 0)
-                disableUpgrades();
         }
-
         private void LightAttackBegin()
         {
             foreach (var weapon in weaponColliders)
