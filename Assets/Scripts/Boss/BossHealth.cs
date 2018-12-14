@@ -106,6 +106,7 @@ public class BossHealth : MonoBehaviour
     }
 
     void KillBoss() {
+        new WaitForSeconds(2);
         nav.enabled = false;
         anim.Play("Die");
         anim.SetBool("isStunned", true);
@@ -113,6 +114,7 @@ public class BossHealth : MonoBehaviour
         GameManager.instance.EnemyDead();
         GameObject.FindGameObjectWithTag("Game UI").GetComponent<GameUI>().To_Credits();
         bossHP.gameObject.SetActive(false);
+        Cursor.visible = true;
     }
 
     IEnumerator removeBoss(){

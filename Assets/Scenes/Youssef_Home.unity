@@ -390,7 +390,7 @@ Prefab:
     - target: {fileID: 114267275053298050, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1,
         type: 2}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114637920093610366, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1,
         type: 2}
@@ -405,6 +405,89 @@ Prefab:
         Unity Asset Store\nMAGICPOT INC, Unity Asset Store \nRRFREELANCE, Unity Asset
         Store.\n\n\n\nMusic\n\nBear McCreary\n\n\n\n\nSFX\n\nSoundBible, freesfx.co\nSherif
         Nasser\nYoussef Elhady"
+      objectReference: {fileID: 0}
+    - target: {fileID: 224339929112575076, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224339929112575076, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224339929112575076, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224339929112575076, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224339929112575076, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224339929112575076, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224339929112575076, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224015767815106470, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -483.19998
+      objectReference: {fileID: 0}
+    - target: {fileID: 224015767815106470, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000019073
+      objectReference: {fileID: 0}
+    - target: {fileID: 1505413813736562, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1128603153251520, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114267275053298050, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1,
+        type: 2}
+      propertyPath: m_fontColor.r
+      value: 0.4245283
+      objectReference: {fileID: 0}
+    - target: {fileID: 114267275053298050, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1,
+        type: 2}
+      propertyPath: m_fontColor.g
+      value: 0.4245283
+      objectReference: {fileID: 0}
+    - target: {fileID: 114267275053298050, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1,
+        type: 2}
+      propertyPath: m_fontColor.b
+      value: 0.4245283
+      objectReference: {fileID: 0}
+    - target: {fileID: 224578254050967162, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114267275053298050, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1,
+        type: 2}
+      propertyPath: m_margin.z
+      value: 12.235853
+      objectReference: {fileID: 0}
+    - target: {fileID: 114267275053298050, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1,
+        type: 2}
+      propertyPath: m_margin.x
+      value: 14.420128
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a7b3f1ca76807045b04ed5ded3bbdb1, type: 2}

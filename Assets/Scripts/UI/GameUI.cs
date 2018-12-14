@@ -75,7 +75,7 @@ public class GameUI : MonoBehaviour {
         Hide_Everything();
         GameOver.SetActive(true);
         game_Paused = true;
-        
+        Cursor.visible = true;
     }
 
 
@@ -98,6 +98,7 @@ public class GameUI : MonoBehaviour {
 
 
     public void Resume() {
+        Cursor.visible = false;
         Hide_Everything();
         HUD.SetActive(true);
         Time.timeScale = 1.0f;
@@ -108,6 +109,7 @@ public class GameUI : MonoBehaviour {
 
 
     public void To_Pause() {
+        Cursor.visible = true;
         currMusic.Stop();
         if(!game_Paused)
             pauseMusic.Play();
