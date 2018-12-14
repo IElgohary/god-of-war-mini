@@ -40,6 +40,11 @@ public class PlayerHealth : MonoBehaviour
     {
         if (!GameManager.instance.gameOver)
         {
+
+            if (Input.GetKeyDown(KeyCode.F1))
+            {
+                currentHealth = maxHealth;
+            }
             healthSlider.value = ((float)currentHealth) / maxHealth;
             shield = Input.GetKey(KeyCode.LeftControl);
             if (shield)

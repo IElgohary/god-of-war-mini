@@ -61,7 +61,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             health = healthScript.currentHealth;
             weaponColliders = GetComponentsInChildren<BoxCollider>();
             anim = GetComponent<Animator>();
-            skillPoints = 50;
+            skillPoints = 0;
             rageSlider.value = rageMeter;
             if (upgradeUI != null){
                 upgradeUI.enabled = false;
@@ -190,7 +190,18 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private void Update()
         {
             if (!GameManager.instance.gameOver)
-            {   
+            {
+
+                if (Input.GetKeyDown(KeyCode.F2))
+                {
+                    XP = PrevXP * 2;
+                }
+                if (Input.GetKeyDown(KeyCode.F3))
+                {
+                    skillPoints = 50;
+                }
+
+
                 if ((Input.GetKeyDown(KeyCode.W)|Input.GetKeyDown(KeyCode.A)|
                 Input.GetKeyDown(KeyCode.D)|Input.GetKeyDown(KeyCode.S))){
                 GetComponents<AudioSource>()[4].Play();
