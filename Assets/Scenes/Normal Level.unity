@@ -653,6 +653,20 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114830693500288778, guid: ac1726b2888c33a4fb57da152d819290,
+        type: 2}
+      propertyPath: m_Text
+      value: "\n\n\n\nModels\n\ndaddidounet, free3d.com\n3D Regenerator, free3d.com\nLaura
+        Shea, sketchfab.com\nJochon, sketchfab.com\nAl0sral0, sketchfab.com\nSeachnasaigh,
+        sharing.com\nAssets3D, Unity Asset Store\nCJ Bou, Unity Asset Store\n3PUPPERSTUDIOS,
+        Unity Asset Store\nNEKCOM Entertainment, Unity Asset Store\nSineVFX,  Unity
+        Asset Store\nPolyNext, Unity Asset Store\nRain Entertainment, Unity Asset
+        Store\nDungeon Mason, Unity Asset Store\nDVORNIK, Unity Asset Store\n\n\n\nTextures\n\nwildtextures.com,\nPixel
+        Indie,  Unity Asset Store\nJuniorPro, Unity Asset Store\n\n\n\nAnimation\n\nMixamo.com\nEXPLOSIVE,
+        Unity Asset Store\nMAGICPOT INC, Unity Asset Store \nRRFREELANCE, Unity Asset
+        Store.\n\n\n\n\nMusic\n\nBear McCreary\n\n\n\n\nSFX\n\nSoundBible, freesfx.co\nSherif
+        Nasser\nYoussef Elhady"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac1726b2888c33a4fb57da152d819290, type: 2}
   m_IsPrefabAsset: 0
