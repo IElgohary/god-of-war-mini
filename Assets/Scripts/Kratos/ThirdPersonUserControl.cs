@@ -121,7 +121,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         }
 
         private void enableUpgrades() {
-            upgradeUI.gameObject.SetActive(true);
+    
             moveUpgrade.gameObject.SetActive(true);
             healthUpgrade.gameObject.SetActive(true);
             attackUpgrade.gameObject.SetActive(true);
