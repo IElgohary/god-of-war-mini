@@ -6175,8 +6175,9 @@ MonoBehaviour:
     Store\nPolyNext, Unity Asset Store\nRain Entertainment, Unity Asset Store\nDungeon
     Mason, Unity Asset Store\nDVORNIK, Unity Asset Store\n\n\n\nTextures\n\nwildtextures.com,\nPixel
     Indie,  Unity Asset Store\nJuniorPro, Unity Asset Store\n\n\n\nAnimation\n\nMixamo.com\nEXPLOSIVE,
-    Unity Asset Store\nMAGICPOT INC, Unity Asset Store \n\n\n\nMusic\n\nBear McCreary\n\n\n\n\nSFX\n\nSoundBible,
-    freesfx.co\nSherif Nasser\nYoussef Elhady"
+    Unity Asset Store\nMAGICPOT INC, Unity Asset Store \nRRFREELANCE, Unity Asset
+    Store.\n\n\n\n\nMusic\n\nBear McCreary\n\n\n\n\nSFX\n\nSoundBible, freesfx.co\nSherif
+    Nasser\nYoussef Elhady"
 --- !u!114 &114860488600429946
 MonoBehaviour:
   m_ObjectHideFlags: 1

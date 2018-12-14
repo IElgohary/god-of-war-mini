@@ -113,7 +113,7 @@ public class PlayerHealth : MonoBehaviour
 
     void killPlayer()
     {
-
+        audios[1].volume = 0.65f;
         audios[1].Play();
         GameObject.FindGameObjectWithTag("Game UI").GetComponent<GameUI>().To_GameOver();
 
